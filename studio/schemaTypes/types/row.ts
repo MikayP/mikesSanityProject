@@ -1,4 +1,5 @@
 import { defineType, defineField } from 'sanity'
+import contentBuilder from '../fields/contentBuilder'
 
 export default defineType({
   name: 'row',
@@ -9,34 +10,33 @@ export default defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
-    }),
+    }),      
     defineField({
-      name: 'content',
-      title: 'Content',
-      type: 'text',
-      rows: 3,
+      name:"contentBuilder",
+      title:"Content Builder",
+      type:"contentBuilder"
     }),
-    defineField({
-      name: 'backgroundColor',
-      title: 'Background Color',
-      type: 'string',
-      options: {
-        list: [
-          { title: 'White', value: 'white' },
-          { title: 'Light Gray', value: 'gray' },
-          { title: 'Black', value: 'black' },
-        ],
-      },
-    }),
+    // defineField({
+    //   name: 'backgroundColor',
+    //   title: 'Background Color',
+    //   type: 'string',
+    //   options: {
+    //     list: [
+    //       { title: 'White', value: 'white' },
+    //       { title: 'Light Gray', value: 'gray' },
+    //       { title: 'Black', value: 'black' },
+    //     ],
+    //   },
+    // }),
   ],
-  preview: {
-    select: {
-      title: 'title',
-    },
-    prepare({ title }) {
-      return {
-        title: title || 'Untitled Row',
-      }
-    },
-  },
+  // preview: {
+  //   select: {
+  //     title: 'title',
+  //   },
+  //   prepare({ title }) {
+  //     return {
+  //       title: title || 'Untitled Row',
+  //     }
+  //   },
+  // },
 })
