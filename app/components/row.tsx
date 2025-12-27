@@ -1,33 +1,19 @@
+import Column from "./column";
 
 type RowProps = {
-  title?: string
-  rowContent: any[]
-  backgroundColor?: string
-  currentSlug?: string
-}
+  columns?: any[];
+};
 
-export function Row({
-  title,
-  rowContent,
-  backgroundColor,
-  currentSlug,
-}: RowProps) {
+export default function Row({ columns }: RowProps) {
+  if (!columns?.length) return null;
+
   return (
-    <section
-      style={{ backgroundColor }}
-      data-slug={currentSlug}
-      className="row"
-    >
-      {title && <h2>{title}</h2>}
-
-      <div className="row-content">
-        {rowContent.map((block) => (
-          <div key={block._key}>
-            {/* Render blocks here */}
-            {block.title && <h3>{block.title}</h3>}
-          </div>
+    <section className="row">
+      <div className="row__grid">
+        {columns.map((column) => (
+          <Column key={column._key} column={column} />
         ))}
       </div>
     </section>
-  )
+  );
 }
