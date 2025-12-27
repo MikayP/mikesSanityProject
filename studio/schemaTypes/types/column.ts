@@ -1,32 +1,18 @@
-import { defineType, defineField, defineArrayMember } from 'sanity'
-import contentBuilder from '../fields/contentBuilder'
+import { defineType, defineField } from 'sanity'
 
 export default defineType({
   name: 'column',
   title: 'Column',
-  type: 'array',
-//   of: [
-
-//     defineArrayMember({
-//         type: 'row',
-//         }),
-
-//         defineArrayMember({
-//         type: 'column',
-//         }),
-//   ]
-
-//   fields: [
-//     defineField({
-//       name: 'title',
-//       title: 'Title',
-//       type: 'string',
-//     }),
-//     defineField({
-//       name: 'content',
-//       title: 'Content',
-//       type: 'text',
-//       rows: 3,
-//     }),
-//   ],
+  type: 'object',
+  fields: [
+    defineField({
+      name: 'column',
+      title: 'Column',
+      type: 'array',
+      of: [
+        { type: 'heading' },
+        { type: 'advancedText' },
+      ],
+    }),
+  ],
 })

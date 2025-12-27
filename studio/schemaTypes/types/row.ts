@@ -1,5 +1,4 @@
-import { defineType, defineField } from 'sanity'
-import contentBuilder from '../fields/contentBuilder'
+import { defineType, defineField, defineArrayMember } from 'sanity'
 
 export default defineType({
   name: 'row',
@@ -12,9 +11,9 @@ export default defineType({
       type: 'string',
     }),      
     defineField({
-      name:"contentBuilder",
-      title:"Content Builder",
-      type:"contentBuilder"
+      name: 'contentBuilder',
+      title: 'Content Builder',
+      type: 'contentBuilder',
     }),
     // defineField({
     //   name: 'backgroundColor',
