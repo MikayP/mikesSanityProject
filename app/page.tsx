@@ -1,36 +1,7 @@
 import Image from "next/image";
-import { groq } from "next-sanity";
 import { client } from "../studio/client";
 import PageBuilder from "./pagebuilder";
-export const pageQuery = groq`
-*[_type == "page" && slug.current == "test-page-slug"][0]{
-  title,
-  "currentSlug": slug.current,
-  pageBuilder[]{
-    _key,
-    _type,
-    contentBuilder[]{
-      _key,
-      _type,
-      colHorizontalAlign,
-      column[]{
-        _key,
-        _type,
-   
-        // heading block
-        _type == "heading" => {
-          level,
-          text
-        },
-        // advanced text block
-        _type == "advancedText" => {
-          text
-        }
-      }
-    }
-  }
-}
-`;
+import { pageQuery } from "./queries/pageQuery";
 
 
 export default async function Page() {
@@ -38,7 +9,7 @@ export default async function Page() {
 
   return (
        <>
-        <pre>{JSON.stringify(data, null, 2)}</pre>
+        {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
   <PageBuilder blocks={data.pageBuilder} />
   </>
   )

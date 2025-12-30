@@ -44,22 +44,19 @@ export default defineType({
   ],
   fields: [
     defineField({
-      // Title
       name: 'title',
       title: 'Title',
       type: 'string',
       group: 'basic',
     }),
-    defineField({
-      // Column Content
+    defineField({ // Column Content 
       name: 'column',
       title: 'Column',
       type: 'array',
       group: 'basic',
       of: [{type: 'heading'}, {type: 'advancedText'}],
     }),
-    defineField({
-      // Flex Direction
+    defineField({    // Flex Direction
       name: 'flexDirection',
       title: 'Flex Direction',
       type: 'string',
@@ -73,7 +70,7 @@ export default defineType({
       },
       group: 'settings',
     }),
-    defineField({
+    defineField({ // colHorizontalAlign
       name: 'colHorizontalAlign',
       title: 'Horizontal Alignment',
       type: 'string',
@@ -86,7 +83,39 @@ export default defineType({
           {title: 'Right', value: 'items-end'},
         ],
       },
-      hidden: ({parent, value}) => parent?.flexDirection === 'flex-row',
+      // hidden: ({parent, value}) => parent?.flexDirection === 'flex-row',
+      group: 'settings',
+    }),
+    defineField({ // Vertical Alignment
+      name: 'colVerticalAlign',
+      title: 'Vertical Alignment',
+      type: 'string',
+      initialValue: 'align-top',
+      fieldset: 'layout',
+      options: {
+        list: [
+          {title: 'Top', value: 'align-top'},
+          {title: 'Center', value: 'align-middle'},
+          {title: 'Bottom', value: 'align-bottom'},
+        ],
+      },
+      // hidden: ({parent, value}) => parent?.flexDirection === 'flex-row',
+      group: 'settings',
+    }),
+     defineField({ // Text alignment
+      name: 'colTextAlign',
+      title: 'Text Alignment',
+      type: 'string',
+      initialValue: 'text-left',
+      fieldset: 'layout',
+      options: {
+        list: [
+          {title: 'Left', value: 'text-left'},
+          {title: 'Center', value: 'text-center'},
+          {title: 'Right', value: 'text-right'},
+        ],
+      },
+      // hidden: ({parent, value}) => parent?.flexDirection === 'flex-row',
       group: 'settings',
     }),
   ],
