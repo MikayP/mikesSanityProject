@@ -5,7 +5,7 @@ type RowProps = {
 };
 
 export default function Row({ columns }: RowProps) {
-  //   console.log("Row columns:", columns);
+    console.log("Row columns:", columns);
 
   // if (!columns?.length) {
   //   console.log("No columns in row");
@@ -15,7 +15,7 @@ export default function Row({ columns }: RowProps) {
 
   return (
     <section className="row">
-      <div className="grid grid-flow-col grid-cols-2 gap-4">
+      <div className="grid grid-flow-col grid-cols-2 gap-4 ">
         {columns.map((column) => (
           <Column key={column._key} column={column} />
         ))}

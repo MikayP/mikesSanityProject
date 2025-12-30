@@ -12,9 +12,11 @@ export const pageQuery = groq`
     contentBuilder[]{
       _key,
       _type,
+      colHorizontalAlign,
       column[]{
         _key,
         _type,
+   
         // heading block
         _type == "heading" => {
           level,
@@ -34,7 +36,13 @@ export const pageQuery = groq`
 export default async function Page() {
   const data = await client.fetch(pageQuery);
 
-  return <PageBuilder blocks={data.pageBuilder} />;
+  return (
+       <>
+        <pre>{JSON.stringify(data, null, 2)}</pre>
+  <PageBuilder blocks={data.pageBuilder} />
+  </>
+  )
+  ;
 }
 
 
