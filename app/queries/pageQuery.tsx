@@ -22,8 +22,8 @@ export const pageQuery = groq`
           text
         },
         // portable text block
-        _type == "portableText" => {
-          content
+      _type == "advancedText" => {
+        content 
         },
           // image block
         _type == "image" => {

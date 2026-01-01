@@ -4,7 +4,7 @@ import AdvancedText from "./fields/advancedText";
 
 type ColumnProps = {
   column: {
-    column?: any[];
+    columnContent?: any[]; // Changed
     colHorizontalAlign?: string; // Add this to the type
     colVerticalAlign?: string;
     colTextAlign?: string;
@@ -16,16 +16,16 @@ export default function Column({ column }: ColumnProps) {
   // console.log("2. Column data:", column);
   // console.log("3. column.column array:", column?.column);
 
-  if (!column?.column?.length) {
+  if (!column?.columnContent?.length) {
     // console.log("4. Returning null - no column data");
     return null;
   }
 
-  return ( 
+  return (
     <div
       className={`py-8 column ${column.colHorizontalAlign || ""} ${column.colVerticalAlign || ""} ${column.colTextAlign || ""}`}
     >
-      {column.column.map((block, index) => {
+      {column.columnContent.map((block, index) => {
         // console.log(`5. Block ${index}:`, block);
         // console.log(`6. Block type:`, block._type);
 
@@ -37,7 +37,7 @@ export default function Column({ column }: ColumnProps) {
           case "image":
             // console.log("8. Rendering imageField");
             return <ImageField key={block._key} imageField={block} />;
-          case "AdvancedText":
+          case "advancedText":
             return <AdvancedText key={block._key} content={block.content} />;
           default:
             // console.log("9. Unknown block type:", block._type);
