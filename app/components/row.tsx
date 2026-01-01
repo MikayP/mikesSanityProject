@@ -5,7 +5,7 @@ type RowProps = {
 };
 
 export default function Row({ columns }: RowProps) {
-    console.log("Row columns:", columns);
+    // console.log("Row columns:", columns);
 
   // if (!columns?.length) {
   //   console.log("No columns in row");

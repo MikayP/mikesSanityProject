@@ -9,17 +9,6 @@ export default defineType({
    defineArrayMember({
       type: 'column',
     }),
-  //  defineArrayMember({
-  //     name: 'heading1',
-  //     title: 'Heading1',
-  //     type: 'string',
-  //   }),
 
-
-//    defineArrayMember({
-//       name: 'textContent',
-//       title:"Text Content",
-//       type: 'blockContent',
-//     }),
     ]
 })

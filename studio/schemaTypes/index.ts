@@ -1,10 +1,10 @@
 import page from './documents/page'
 import contentBuilder from './fields/contentBuilder'
 import row from './types/row'
-import heading from './fields/heading'
 import column from './types/column'
+import heading from './fields/heading'
+import imageField from './fields/imageField'
 import advancedText from './fields/advancedText'
 
-
 export const schemaTypes = [ page , row , contentBuilder, 
-    heading, column, advancedText ]
+    heading, column, imageField, advancedText ]

@@ -13,18 +13,22 @@ export const pageQuery = groq`
       colHorizontalAlign,
        colVerticalAlign,
        colTextAlign,
-      column[]{
+      columnContent[]{
         _key,
         _type,
-   
         // heading block
         _type == "heading" => {
           level,
           text
         },
-        // advanced text block
-        _type == "advancedText" => {
-          text
+        // portable text block
+        _type == "portableText" => {
+          content
+        },
+          // image block
+        _type == "image" => {
+          asset->,
+          alt
         }
       }
     }
