@@ -54,7 +54,7 @@ export default defineType({
       title: 'Column Content',
       type: 'array',
       group: 'basic',
-      of: [{type: 'heading'},  {type: 'image'}],
+      of: [{type: 'heading'}, {type: 'advancedText'},  {type: 'image'}],
     }),
     defineField({    // Flex Direction
       name: 'flexDirection',
