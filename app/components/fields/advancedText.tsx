@@ -7,7 +7,7 @@ type AdvancedTextProps = {
 
 export default function AdvancedText({ content }: AdvancedTextProps) {
   if (!content) return null;
-  console.log("AdvancedText content:", content);
+  // console.log("AdvancedText content:", content);
   return (
     <div className="portable-text">
       <PortableText value={content} />

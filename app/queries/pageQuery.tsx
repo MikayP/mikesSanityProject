@@ -26,7 +26,9 @@ export const pageQuery = groq`
         content 
         },
           // image block
-        _type == "image" => {
+        _type == "imageField" => {
+        borderRadius,
+         maxHeight,
           asset->,
           alt
         }

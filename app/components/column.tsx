@@ -23,7 +23,7 @@ export default function Column({ column }: ColumnProps) {
 
   return (
     <div
-      className={`py-8 column ${column.colHorizontalAlign || ""} ${column.colVerticalAlign || ""} ${column.colTextAlign || ""}`}
+      className={`py-8 column flex flex-col ${column.colHorizontalAlign || ""} ${column.colVerticalAlign || ""} ${column.colTextAlign || ""}`}
     >
       {column.columnContent.map((block, index) => {
         // console.log(`5. Block ${index}:`, block);
@@ -34,7 +34,7 @@ export default function Column({ column }: ColumnProps) {
             // remember it's the type, not the name
             // console.log("7. Rendering heading");
             return <Heading key={block._key} {...block} />;
-          case "image":
+          case "imageField":
             // console.log("8. Rendering imageField");
             return <ImageField key={block._key} imageField={block} />;
           case "advancedText":

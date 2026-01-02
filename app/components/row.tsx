@@ -15,7 +15,7 @@ export default function Row({ columns }: RowProps) {
 
   return (
     <section className="row">
-      <div className="grid grid-flow-col grid-cols-2 gap-4 ">
+      <div className="grid grid-flow-col md:grid-cols-2 gap-8 md:gap-20">
         {columns.map((column) => (
           <Column key={column._key} column={column} />
         ))}
