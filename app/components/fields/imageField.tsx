@@ -13,7 +13,7 @@ export default function ImageField({ imageField }: ImageProps) {
     : {};
 
   return (
-    <img  className={imageField.borderRadius ? 'rounded-lg' : ''}
+    <img  className={` ${imageField.borderRadius ? 'rounded-lg' : ''} w-fit`}
           style={styles}
       src={urlFor(imageField).width(800).url()}
       alt={imageField.alt || 'Image'} 
