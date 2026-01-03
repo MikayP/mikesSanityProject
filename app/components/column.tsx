@@ -21,10 +21,12 @@ export default function Column({ column }: ColumnProps) {
     return null;
   }
 
+
   return (
     <div
       className={`py-8 column flex flex-col ${column.colHorizontalAlign || ""} ${column.colVerticalAlign || ""} ${column.colTextAlign || ""}`}
     >
+      
       {column.columnContent.map((block, index) => {
         // console.log(`5. Block ${index}:`, block);
         // console.log(`6. Block type:`, block._type);

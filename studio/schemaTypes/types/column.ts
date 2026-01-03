@@ -49,14 +49,36 @@ export default defineType({
       type: 'string',
       group: 'basic',
     }),
-    defineField({ // Column Content 
+    defineField({
+      name: 'columnLayout',
+      title: 'Column Layout',
+      type: 'string',
+      group: 'basic',
+      options: {
+        list: [
+          {title: '1 Column Layout', value: '1'},
+          {title: '2 Column Layout', value: '2'},
+          {title: '3 Column Layout', value: '3'},
+          {title: '4 Column Layout', value: '4'},
+          {title: '5 Column Layout', value: '5'},
+          {title: '6 Column Layout', value: '6'},
+          {title: '7 Column Layout', value: '7'},
+          {title: '8 Column Layout', value: '8'},
+        ],
+        layout: 'dropdown',
+      },
+    }),
+
+    defineField({
+      // Column Content
       name: 'columnContent',
       title: 'Column Content',
       type: 'array',
       group: 'basic',
-      of: [{type: 'heading'}, {type: 'advancedText'},  {type: 'imageField'}],
+      of: [{type: 'heading'}, {type: 'advancedText'}, {type: 'imageField'}],
     }),
-    defineField({    // Flex Direction
+    defineField({
+      // Flex Direction
       name: 'flexDirection',
       title: 'Flex Direction',
       type: 'string',
@@ -70,7 +92,8 @@ export default defineType({
       },
       group: 'settings',
     }),
-    defineField({ // colHorizontalAlign
+    defineField({
+      // colHorizontalAlign
       name: 'colHorizontalAlign',
       title: 'Horizontal Alignment',
       type: 'string',
@@ -86,7 +109,8 @@ export default defineType({
       // hidden: ({parent, value}) => parent?.flexDirection === 'flex-row',
       group: 'settings',
     }),
-    defineField({ // Vertical Alignment
+    defineField({
+      // Vertical Alignment
       name: 'colVerticalAlign',
       title: 'Vertical Alignment',
       type: 'string',
@@ -102,7 +126,8 @@ export default defineType({
       // hidden: ({parent, value}) => parent?.flexDirection === 'flex-row',
       group: 'settings',
     }),
-     defineField({ // Text alignment
+    defineField({
+      // Text alignment
       name: 'colTextAlign',
       title: 'Text Alignment',
       type: 'string',
