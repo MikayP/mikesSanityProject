@@ -32,7 +32,13 @@ export const pageQuery = groq`
          maxHeight,
           asset->,
           alt
-        }
+        },
+          _type == "button" => {
+            title,
+            link,
+            style,
+            targetBlank
+          }
       }
     }
   }

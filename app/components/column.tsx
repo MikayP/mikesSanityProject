@@ -1,6 +1,7 @@
 import Heading from "./fields/heading";
 import ImageField from "./fields/imageField";
 import AdvancedText from "./fields/advancedText";
+import Button from "./fields/button";
 
 type ColumnProps = {
   column: {
@@ -21,12 +22,10 @@ export default function Column({ column }: ColumnProps) {
     return null;
   }
 
-
   return (
     <div
       className={`py-8 column flex flex-col ${column.colHorizontalAlign || ""} ${column.colVerticalAlign || ""} ${column.colTextAlign || ""}`}
     >
-      
       {column.columnContent.map((block, index) => {
         // console.log(`5. Block ${index}:`, block);
         // console.log(`6. Block type:`, block._type);
@@ -41,6 +40,8 @@ export default function Column({ column }: ColumnProps) {
             return <ImageField key={block._key} imageField={block} />;
           case "advancedText":
             return <AdvancedText key={block._key} content={block.content} />;
+          case "button":
+            return <Button key={block._key}  button={block} />;
           default:
             // console.log("9. Unknown block type:", block._type);
             return null;
