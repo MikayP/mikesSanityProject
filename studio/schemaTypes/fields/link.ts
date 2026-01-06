@@ -69,50 +69,6 @@ export default defineType({
       title: "External URL",
       type: "string",
       description: "Use an absolute URL, email, telephone, or custom value with #",
-      // validation: (rule) => [
-      //   rule
-      //     .custom((value, context) => {
-      //       const parent: any = context?.parent;
-      //       const linkType = parent.linkType;
-      //       const stringValue = value ?? "";
-
-      //       if (linkType === LinkType.External) {
-      //         if (isRelativeUrl(stringValue)) return "This is a relative link. Did you mean to make an internal link?";
-      //         if (
-      //           stringValue.startsWith("https://www.sailpoint.com") ||
-      //           stringValue.startsWith("https://sailpoint.com")
-      //         )
-      //           return "This is a link to sailpoint.com. Did you mean to make an internal link?";
-      //       }
-
-      //       return true;
-      //     })
-      //     .warning(),
-      //   rule.custom((value, context) => {
-      //     const parent: any = context?.parent;
-      //     const linkType = parent.linkType;
-      //     const stringValue = value;
-
-      //     if (linkType !== LinkType.External) return true;
-      //     if (!stringValue) return true;
-      //     if (stringValue.startsWith("#")) return true;
-      //     if (isRelativeUrl(stringValue)) return true;
-
-      //     let url;
-      //     try {
-      //       url = new URL(stringValue);
-      //     } catch (err) {
-      //       return `URL is invalid: ${stringValue}`;
-      //     }
-
-      //     const matchesAllowedScheme = AllowedSchemes.some((scheme) => url.protocol === scheme);
-      //     if (!matchesAllowedScheme) {
-      //       return `Only ${AllowedSchemes.map((s) => s.slice(0, -1)).join(", ")} are allowed.`;
-      //     }
-
-      //     return true;
-      //   }),
-      // ],
       hidden: ({ parent }) => parent?.linkType !== "external",
       group: "link",
     }),

@@ -8,6 +8,8 @@ import imageField from './fields/imageField'
 import advancedText from './fields/advancedText'
 import button from './fields/button'
 import link from './fields/link' 
+import menuItem from './fields/menuItem'
 
-export const schemaTypes = [ page, mainMenu, row , contentBuilder, 
+
+export const schemaTypes = [ page, mainMenu, menuItem, row , contentBuilder, 
     heading, column, imageField, advancedText, button, link ]
