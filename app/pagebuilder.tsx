@@ -1,4 +1,5 @@
 import Row from "./components/row";
+import Hero from "./components/hero";
 
 export default function PageBuilder({ blocks }) {
   // console.log("PageBuilder blocks:", blocks);
@@ -14,7 +15,15 @@ export default function PageBuilder({ blocks }) {
   return (
     <>
       {blocks.map((block) => {
+              // console.log("Processing block:", block._type, block); // Add this
         switch (block._type) {
+          case "hero":
+            return (
+              <Hero
+                key={block._key ?? Math.random().toString(36)}
+                hero={block}
+              />
+            );
           case "row":
             // console.log("Row block data:", JSON.stringify(block, null, 2));
             return (

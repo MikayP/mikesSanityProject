@@ -16,7 +16,7 @@ type ButtonProps = {
 };
 
 export default function Button({ button }: ButtonProps) {
-    console.log(button)
+    // console.log(button)
 
   return (
 
