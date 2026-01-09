@@ -1,5 +1,5 @@
 import Row from "./components/row";
-import Hero from "./components/hero";
+import Hero from "./components/hero/hero";
 
 export default function PageBuilder({ blocks }) {
   // console.log("PageBuilder blocks:", blocks);
