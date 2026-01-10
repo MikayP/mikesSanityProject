@@ -35,6 +35,12 @@ export const pageQuery = groq`
         heading,
         subheading,
         heroStyle,
+        advancedText{  // Just fetch it directly, no nested conditional
+          content
+        },
+
+        subheading,
+        heroStyle,
         buttons[]{
           _key,
           _type,

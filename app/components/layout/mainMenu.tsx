@@ -22,7 +22,7 @@ export default function MainMenu({ mainMenu }: MainMenuProps) {
   // console.log(mainMenu);
 
   if (!mainMenu?.menuItems) return null;
-
+ 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-6 py-4">
@@ -52,9 +52,9 @@ export default function MainMenu({ mainMenu }: MainMenuProps) {
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               className="lucide lucide-menu"
             >
               <line x1="4" x2="20" y1="12" y2="12"></line>

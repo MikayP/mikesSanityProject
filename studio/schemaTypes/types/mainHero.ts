@@ -17,9 +17,9 @@ export default defineType({
   ],
   fields: [
     defineField({
-      name: 'heading',
-      type: 'string',
-      title: 'Heading',
+      name: 'advancedText',
+      title: 'Advanced Text',
+      type: 'advancedText',
       validation: (rule) => rule.required(),
       group: 'basic',
     }),

@@ -9,7 +9,7 @@ import advancedText from './fields/advancedText'
 import button from './fields/button'
 import link from './fields/link' 
 import menuItem from './fields/menuItem'
-import hero from './types/hero'
+import hero from './types/mainHero'
 
 export const schemaTypes = [ page, mainMenu, menuItem, row, hero, contentBuilder, 
     heading, column, imageField, advancedText, button, link ]

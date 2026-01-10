@@ -2,7 +2,7 @@ import MainHero from "./mainHero";
 import SubPageHero from "./subPageHero";
 
 export default function Hero({ hero }) {
-  console.log(hero);
+
 
   if (!hero) return null;
 

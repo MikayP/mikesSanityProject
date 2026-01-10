@@ -1,5 +1,18 @@
 @layer base {
   body {
-    @apply bg-cream;
+    // @apply bg-cream;
+  }
+  h1 strong {
+    font-family: var(--font-handwritten);
+    font-size: 3.75rem; /* text-6xl */
+    background: var(--gradient-warm);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  @media (min-width: 768px) {
+    h1 strong {
+      font-size: 6rem; /* md:text-8xl */
+    }
   }
 }
