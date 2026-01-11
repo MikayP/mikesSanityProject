@@ -48,5 +48,10 @@ export default defineType({
         ],
       },
     }),
+    defineField({
+      name: 'blobs',
+      type: 'boolean',
+      group: 'settings', 
+    }),
   ],
 })
