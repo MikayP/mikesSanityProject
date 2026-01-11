@@ -1,6 +1,6 @@
 @layer base {
   body {
-    // @apply bg-cream;
+    @apply bg-background text-foreground;
   }
   h1 strong {
     font-family: var(--font-handwritten);
