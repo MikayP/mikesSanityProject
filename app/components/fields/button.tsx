@@ -1,13 +1,10 @@
 type ButtonProps = {
-  button?: {
-    _key: string;
-    _type: string;
+  button: {
     title: string;
     link?: {
-      _type: string;
       linkType: 'internal' | 'external' | 'file';
       external?: string;
-      internal?: any; // or proper reference type
+      internal?: any;
       file?: any;
     };
     style?: string;
@@ -16,12 +13,34 @@ type ButtonProps = {
 };
 
 export default function Button({ button }: ButtonProps) {
-    // console.log(button)
+  // Determine the URL based on link type
+  const getUrl = () => {
+    if (!button.link) return '#';
+    
+    switch (button.link.linkType) {
+      case 'external':
+        return button.link.external || '#';
+      case 'internal':
+        return button.link.internal?.slug?.current || '#';
+      case 'file':
+        return button.link.file?.asset?.url || '#';
+      default:
+        return '#';
+    }
+  };
 
   return (
-
-     <button>
-      {button?.title || 'Button'}
-    </button>
+    
+     <a href={getUrl()}
+      target={button.targetBlank ? '_blank' : '_self'}
+      rel={button.targetBlank ? 'noopener noreferrer' : undefined}
+      className={`inline-flex items-center px-6 py-3 rounded-full font-semibold transition-all ${
+        button.style === 'btn--sun' 
+          ? 'bg-gradient-to-r from-primary to-accent text-primary-foreground hover:scale-105' 
+          : 'border-2 border-foreground/20 hover:border-foreground/40 hover:scale-105'
+      }`}
+    >
+      {button.title}
+    </a>
   );
 }

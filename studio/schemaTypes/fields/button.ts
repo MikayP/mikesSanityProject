@@ -9,10 +9,12 @@ export default defineType({
   preview: {
     select: {
       title: "title",
+      style: "style",
     },
-    prepare: ({ title }) => {
+    prepare: ({ title, style }) => {
       return {
-        title: `Button: ${title}`,
+        title: `${title}`,
+        subtitle: `${style}`,
       };
     },
   },
@@ -52,16 +54,16 @@ export default defineType({
       type: "string",
       options: {
         list: [
-          { title: "Blue", value: "btn--blue" },
-          { title: "White", value: "btn--blue-alt" },
-          { title: "Hotpink", value: "btn--hotpink" },
-          { title: "Outline Blue", value: "btn--outline" },
-          { title: "Outline White", value: "btn--outline-alt" },
-          { title: "Arrow Blue", value: "btn--arrow" },
-          { title: "Arrow White", value: "btn--arrow-alt" },
+          { title: "Sun", value: "btn--sun" },
+          { title: "Outline Grey", value: "btn--outline-grey" },
+          // { title: "Hotpink", value: "btn--hotpink" },
+          // { title: "Outline Blue", value: "btn--outline" },
+          // { title: "Outline White", value: "btn--outline-alt" },
+          // { title: "Arrow Blue", value: "btn--arrow" },
+          // { title: "Arrow White", value: "btn--arrow-alt" },
         ],
       },
-      initialValue: "btn--blue",
+      initialValue: "btn--outline-grey",
       group: "basic",
       readOnly: (props) => props?.parent?.lockStyles,
     }),

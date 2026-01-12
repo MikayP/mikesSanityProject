@@ -1,7 +1,10 @@
 import { PortableText } from "@portabletext/react";
 import Blobs from "../fields/blobs";
+import Button from "../fields/button";
+
 export default function MainHero({ hero }) {
-  // console.log("Hero data:", hero);
+  // console.log("Hero data:", hero.buttons);
+
   return (
     <section className="min-h-screen relative overflow-hidden flex items-center pt-20">
       {/* Decorative blobs */}
@@ -62,6 +65,9 @@ export default function MainHero({ hero }) {
             className="flex flex-wrap justify-center gap-4 animate-fade-up"
             style={{ animationDelay: "0.5s" }}
           >
+            {hero.buttons?.map((btn) => (
+              <Button key={btn._key} button={btn} />
+            ))}
             {/* <Button variant="fun" size="lg" asChild>
               <a href="#about">Get to know me ✨</a>
             </Button>

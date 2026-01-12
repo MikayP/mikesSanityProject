@@ -39,7 +39,7 @@ export const pageQuery = groq`
           content
         },
           blobs,
-        buttons[]{
+        button[]{
           _key,
           _type,
           title,
