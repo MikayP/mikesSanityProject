@@ -61,6 +61,7 @@ export const pageQuery = groq`
       contentBuilder[]{
         _key,
         _type,
+        card,
         colHorizontalAlign,
         colVerticalAlign,
         colTextAlign,

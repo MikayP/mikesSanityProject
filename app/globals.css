@@ -60,7 +60,11 @@
     --border: 240 10% 20%;
     --input: 240 10% 20%;
     --ring: 12 76% 61%;
-
+    --gradient-warm: linear-gradient(
+      135deg,
+      hsl(var(--primary)),
+      hsl(var(--accent))
+    );
     --primary: 12 76% 61%;
     --primary-foreground: 240 10% 8%;
 
@@ -92,5 +96,41 @@
     --sidebar-ring: 12 76% 61%;
 
     --radius: 1rem;
+
+    /* Gradient */
+    --gradient-warm: linear-gradient(
+      135deg,
+      hsl(var(--primary)),
+      hsl(var(--accent))
+    );
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  h1 strong {
+    font-family: var(--font-handwritten);
+    font-size: 3.75rem; /* text-6xl */
+    background: var(--gradient-warm);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  @media (min-width: 768px) {
+    h1 strong {
+      font-size: 6rem; /* md:text-8xl */
+    }
+  }
+}
+
+@layer utilities {
+  .container-custom {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 }

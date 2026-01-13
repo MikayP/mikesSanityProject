@@ -29,7 +29,9 @@ export default function PageBuilder({ blocks }) {
             return (
               <Row
                 key={block._key ?? Math.random().toString(36)}
-                columns={block.contentBuilder} // Changed from spreading block
+                columns={block.contentBuilder}
+                columnLayout={block.columnLayout} 
+                 // Changed from spreading block
               />
             );
           default:

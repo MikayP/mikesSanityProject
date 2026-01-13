@@ -49,25 +49,6 @@ export default defineType({
       type: 'string',
       group: 'basic',
     }),
-    defineField({
-      name: 'columnLayout',
-      title: 'Column Layout',
-      type: 'string',
-      group: 'basic',
-      options: {
-        list: [
-          {title: '1 Column Layout', value: '1'},
-          {title: '2 Column Layout', value: '2'},
-          {title: '3 Column Layout', value: '3'},
-          {title: '4 Column Layout', value: '4'},
-          {title: '5 Column Layout', value: '5'},
-          {title: '6 Column Layout', value: '6'},
-          {title: '7 Column Layout', value: '7'},
-          {title: '8 Column Layout', value: '8'},
-        ],
-        layout: 'dropdown',
-      },
-    }),
 
     defineField({
       // Column Content
@@ -76,6 +57,20 @@ export default defineType({
       type: 'array',
       group: 'basic',
       of: [{type: 'heading'}, {type: 'advancedText'}, {type: 'imageField'}, {type: 'button'}],
+    }),
+        defineField({
+      name: 'card',
+      title: 'Card Style',
+      type: 'string',
+      description: 'different card styling options',
+      initialValue: 'shadow',
+      group: 'settings',
+      options: {
+        list: [
+          {title: 'Shadow', value: 'shadow'},
+
+        ],
+      },
     }),
     defineField({
       // Flex Direction
@@ -143,6 +138,7 @@ export default defineType({
       // hidden: ({parent, value}) => parent?.flexDirection === 'flex-row',
       group: 'settings',
     }),
+
   ],
 
   preview: {
