@@ -138,6 +138,13 @@ export default defineType({
       // hidden: ({parent, value}) => parent?.flexDirection === 'flex-row',
       group: 'settings',
     }),
+    defineField({
+      name: 'customClass',
+      type: 'string',
+      title: 'Custom CSS Classes',
+      description: 'Add custom CSS classes to the column for additional styling',
+      group: 'settings',
+    }), 
 
   ],
 

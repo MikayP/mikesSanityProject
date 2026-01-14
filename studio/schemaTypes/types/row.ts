@@ -31,7 +31,7 @@ export default defineType({
     }),
         defineField({
       name: 'contentBuilder',
-      title: 'Content Builder',
+      title: 'Column Content Builder',
       type: 'contentBuilder',
     }),
     // defineField({
