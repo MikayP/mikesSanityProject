@@ -5,7 +5,8 @@ import Button from "./fields/button";
 
 type ColumnProps = {
   column: {
-    columnContent?: any[]; // Changed
+    columnContent?: any[];
+    customClass?: string;
     card?: string;
     colHorizontalAlign?: string; // Add this to the type
     colVerticalAlign?: string;
@@ -23,13 +24,15 @@ export default function Column({ column }: ColumnProps) {
     return null;
   }
 
+  const customClass = column.customClass || "";
+    console.log(customClass);
   // Define shadowCard class conditionally
   const shadowCard = column.card === "shadow" 
-    ? "bg-card border border-border md:p-12 p-8 rounded-3xl shadow-soft" 
+    ? "bg-card border border-border md:p-12 p-8 rounded-3xl shadow-soft gap-8" 
     : "";
   return (
     <div
-      className={`py-8 column flex flex-col ${shadowCard} ${column.colHorizontalAlign || ""} ${column.colVerticalAlign || ""} ${column.colTextAlign || ""}`}
+      className={`py-8 column flex flex-col ${shadowCard} ${customClass} ${column.colHorizontalAlign || ""} ${column.colVerticalAlign || ""} ${column.colTextAlign || ""}`}
     >
       {column.columnContent.map((block, index) => {
         // console.log(`5. Block ${index}:`, block);

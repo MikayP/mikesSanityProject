@@ -66,6 +66,7 @@ export const pageQuery = groq`
         colVerticalAlign,
         colTextAlign,
         columnLayout,
+        customClass,
         columnContent[]{
           _key,
           _type,

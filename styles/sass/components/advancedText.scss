@@ -1,0 +1,9 @@
+.shadow-soft {
+  .portable-text {
+    &:not(:first-child) {
+      padding-top: 2rem;
+      border-color: hsl(var(--border));
+      border-top-width: 1px;
+    }
+  }
+}

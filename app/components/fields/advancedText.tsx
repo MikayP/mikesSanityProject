@@ -1,5 +1,5 @@
 import { PortableText } from '@portabletext/react';
-
+import "../../../styles/sass/components/advancedText.scss";
 
 type AdvancedTextProps = {
   content?: any[];
