@@ -6,9 +6,6 @@ export default defineType({
     title: 'Content Builder',
     type: 'array',
     of: [
-   defineArrayMember({
-      type: 'column',
-    }),
-
+      {type: 'column',}, {type: 'card'}
     ]
 })

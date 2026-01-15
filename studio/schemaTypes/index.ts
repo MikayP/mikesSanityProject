@@ -9,7 +9,8 @@ import advancedText from './fields/advancedText'
 import button from './fields/button'
 import link from './fields/link' 
 import menuItem from './fields/menuItem'
-import hero from './types/mainHero'
+import hero from './types/hero'
+import card from './objects/card'
 
-export const schemaTypes = [ page, mainMenu, menuItem, row, hero, contentBuilder, 
+export const schemaTypes = [ page, mainMenu, menuItem, card, row, hero, contentBuilder, 
     heading, column, imageField, advancedText, button, link ]

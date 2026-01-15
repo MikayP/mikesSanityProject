@@ -1,9 +1,11 @@
 import {defineField, defineType} from 'sanity'
+import {MenuIcon} from '@sanity/icons'
 
 export default defineType({
   name: 'hero',
   type: 'object',
   title: 'Hero Section',
+  icon: MenuIcon,
   groups: [
     {
       name: 'basic',
@@ -16,6 +18,18 @@ export default defineType({
     },
   ],
   fields: [
+    defineField({
+      name: 'heroStyle',
+      type: 'string',
+      title: 'Hero Style',
+      group: 'settings',
+      options: {
+        list: [
+          {title: 'Front Page Hero', value: 'main-hero'},
+          {title: 'Sub Page Hero', value: 'sub-page-hero'},
+        ],
+      },
+    }),
     defineField({
       name: 'advancedText',
       title: 'Advanced Text',
@@ -30,28 +44,17 @@ export default defineType({
       group: 'basic',
     }),
     defineField({
-        name: "buttons",
-        type: "array",
-        group: "basic",
-        of: [{ type: "button" }],
-    }),
-
-    defineField({
-      name: 'heroStyle',
-      type: 'string',
-      title: 'Hero Style',
-      group: 'settings',
-      options: {
-        list: [
-            { title: 'Front Page Hero', value: 'main-hero' },
-            { title: 'Sub Page Hero', value: 'sub-page-hero' },
-        ],
-      },
+      name: 'buttons',
+      type: 'array',
+      group: 'basic',
+      of: [{type: 'button'}],
+      hidden: ({parent}) => parent?.heroStyle === 'sub-page-hero',
     }),
     defineField({
       name: 'blobs',
       type: 'boolean',
-      group: 'settings', 
+      group: 'settings',
+      hidden: ({parent}) => parent?.heroStyle === 'sub-page-hero',
     }),
   ],
 })
