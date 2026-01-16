@@ -38,17 +38,22 @@ export default defineType({
       group: 'basic',
     }),
     defineField({
-        name:'pills',
-        type:'string',
-        title:'Pills',
-        group:'basic',
-        description: 'List of pills'
+      name: 'pills',
+      title: 'Pills',
+      type: 'array',
+      description: 'List of pills',
+      group: 'basic',
+      of: [
+        {
+          type: 'string',
+        },
+      ],
     }),
     defineField({
-        name: 'button',
-        title: 'Button',
-        type: 'button',
-        group: 'basic',
+      name: 'button',
+      title: 'Button',
+      type: 'button',
+      group: 'basic',
     }),
   ],
 })

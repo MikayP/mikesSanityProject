@@ -25,7 +25,7 @@ export default function Column({ column }: ColumnProps) {
   }
 
   const customClass = column.customClass || "";
-    console.log(customClass);
+
   // Define shadowCard class conditionally
   const shadowCard = column.card === "shadow" 
     ? "bg-card border border-border md:p-12 p-8 rounded-3xl shadow-soft gap-8" 

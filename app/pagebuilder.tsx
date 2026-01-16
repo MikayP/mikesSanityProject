@@ -1,5 +1,6 @@
 import Row from "./components/row";
 import Hero from "./components/hero/hero";
+import Card from "./components/layout/card";
 
 export default function PageBuilder({ blocks }) {
   // console.log("PageBuilder blocks:", blocks);
@@ -15,7 +16,7 @@ export default function PageBuilder({ blocks }) {
   return (
     <>
       {blocks.map((block) => {
-              // console.log("Processing block:", block._type, block); // Add this
+        // console.log("Processing block:", block._type, block); // Add this
         switch (block._type) {
           case "hero":
             return (
@@ -30,8 +31,8 @@ export default function PageBuilder({ blocks }) {
               <Row
                 key={block._key ?? Math.random().toString(36)}
                 columns={block.contentBuilder}
-                columnLayout={block.columnLayout} 
-                 // Changed from spreading block
+                columnLayout={block.columnLayout}
+                // Changed from spreading block
               />
             );
           default:

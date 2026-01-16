@@ -56,7 +56,7 @@ export default defineType({
         list: [
           { title: "Sun", value: "btn--sun" },
           { title: "Outline Grey", value: "btn--outline-grey" },
-          // { title: "Hotpink", value: "btn--hotpink" },
+          { title: "Plain Text", value: "btn--plain" },
           // { title: "Outline Blue", value: "btn--outline" },
           // { title: "Outline White", value: "btn--outline-alt" },
           // { title: "Arrow Blue", value: "btn--arrow" },

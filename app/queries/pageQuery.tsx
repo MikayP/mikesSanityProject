@@ -27,7 +27,7 @@ export const pageQuery = groq`
       _key,
       _type,
       
-      // Fetch ALL fields at this level, not just inside contentBuilder
+      // Fetch ALL fields at this level
       ...,
       
       // Hero-specific fields (when _type is hero)
@@ -35,10 +35,10 @@ export const pageQuery = groq`
         heading,
         subheading,
         heroStyle,
-        advancedText{  // Just fetch it directly, no nested conditional
+        advancedText{
           content
         },
-          blobs,
+        blobs,
         button[]{
           _key,
           _type,
@@ -57,16 +57,41 @@ export const pageQuery = groq`
         }
       },
       
-      // ContentBuilder fields (when _type is row or similar)
+      // ContentBuilder fields (when _type is row)
       contentBuilder[]{
         _key,
         _type,
-        card,
+        
+        // Card fields (when _type is card)
+        _type == "card" => {
+          heading,
+          text,
+          pills,
+          button{
+            _key,
+            _type,
+            title,
+            link{
+              _type,
+              linkType,
+              external,
+              internal->,
+              file{
+                asset->
+              }
+            },
+            style,
+            targetBlank
+          }
+        },
+        
+        // Column fields (when _type is column)
         colHorizontalAlign,
         colVerticalAlign,
         colTextAlign,
         columnLayout,
         customClass,
+        
         columnContent[]{
           _key,
           _type,

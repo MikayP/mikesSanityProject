@@ -59,10 +59,10 @@ export default defineType({
       of: [{type: 'heading'}, {type: 'advancedText'}, {type: 'imageField'}, {type: 'button'}],
     }),
         defineField({
-      name: 'card',
-      title: 'Card Style',
+      name: 'columnStyle',
+      title: 'Column Style',
       type: 'string',
-      description: 'different card styling options',
+      description: 'Different column styling options',
       initialValue: 'shadow',
       group: 'settings',
       options: {
