@@ -67,6 +67,7 @@ export const pageQuery = groq`
           heading,
           text,
           pills,
+          cardBG,
           button{
             _key,
             _type,
@@ -91,7 +92,7 @@ export const pageQuery = groq`
         colTextAlign,
         columnLayout,
         customClass,
-        
+        columnStyle,
         columnContent[]{
           _key,
           _type,

@@ -17,14 +17,20 @@ export default defineType({
   ],
   fields: [
     defineField({
-      name: 'card',
-      title: 'Card Style',
+      name: 'cardBG',
+      title: 'Card Background',
       type: 'string',
       group: 'settings',
       options: {
-        list: [{title: 'Gradient Card', value: 'gradient-card'}],
-      },
-    }),
+        list: [
+              {title: 'Gradient Card 1', value: 'bg-gradient-1'},
+              {title: 'Gradient Card 2', value: 'bg-gradient-2'}, 
+              {title: 'Gradient Card 3', value: 'bg-gradient-3'},
+              {title: 'Gradient Card 4', value: 'bg-gradient-4'}, 
+            ],   
+          }
+        }),
+
     defineField({
       name: 'heading',
       type: 'string',

@@ -7,7 +7,7 @@ type ColumnProps = {
   column: {
     columnContent?: any[];
     customClass?: string;
-    card?: string;
+    columnStyle?: string;
     colHorizontalAlign?: string; // Add this to the type
     colVerticalAlign?: string;
     colTextAlign?: string;
@@ -27,9 +27,10 @@ export default function Column({ column }: ColumnProps) {
   const customClass = column.customClass || "";
 
   // Define shadowCard class conditionally
-  const shadowCard = column.card === "shadow" 
+   const shadowCard = column.columnStyle === "shadow" 
     ? "bg-card border border-border md:p-12 p-8 rounded-3xl shadow-soft gap-8" 
     : "";
+
   return (
     <div
       className={`py-8 column flex flex-col ${shadowCard} ${customClass} ${column.colHorizontalAlign || ""} ${column.colVerticalAlign || ""} ${column.colTextAlign || ""}`}

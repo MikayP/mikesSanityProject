@@ -1,4 +1,35 @@
+import Button from "../fields/button"
+
 export default function Card({ card }) {
-  console.log("Card component received:", card);
-  return <div>Card Component - {card?.heading}</div>;
+  console.log(card);
+  
+  if (!card) return null;
+
+  return (
+    <section id="projects" className="py-24 relative">
+      <div className="container mx-auto px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className={`group p-8 ${card.cardBG} rounded-3xl  border border-border hover:border-primary/50 transition-all duration-300 hover-lift`}>
+            <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
+              {card.heading}
+            </h3>
+            <p className="text-muted-foreground mb-4">
+              {card.text}
+            </p>
+            <div className="flex flex-wrap gap-2 mb-4">
+              {card.pills?.map((tag) => (
+                <span
+                  key={tag}
+                  className="px-3 py-1 rounded-full bg-background/80 text-xs font-medium text-muted-foreground"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+            {card.button && <Button button={card.button} />}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }
