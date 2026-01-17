@@ -6,10 +6,9 @@ export default function Card({ card }) {
   if (!card) return null;
 
   return (
-    <section id="projects" className="py-24 relative">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
-          <div className={`group p-8 ${card.cardBG} rounded-3xl  border border-border hover:border-primary/50 transition-all duration-300 hover-lift`}>
+          <div className={`group p-8 ${card.cardBG} rounded-3xl  border border-border transition-all duration-300 hover:-translate-y-1 hover:shadow-lg`}>
             <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
               {card.heading}
             </h3>
@@ -30,6 +29,5 @@ export default function Card({ card }) {
           </div>
         </div>
       </div>
-    </section>
   );
 }

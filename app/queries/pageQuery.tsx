@@ -1,7 +1,7 @@
 import { groq } from "next-sanity";
 
 export const pageQuery = groq`
-  *[_type == "page" && slug.current == "test-page-slug"][0]{
+  *[_type == "page" && slug.current == $slug][0]{
     title,
     "currentSlug": slug.current,
 

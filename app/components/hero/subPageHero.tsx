@@ -7,7 +7,7 @@ export default function MainHero({ hero }) {
   // console.log("Hero data:", hero.buttons);
 
   return (
-    <section className="min-h-screen relative overflow-hidden flex py-24">
+    <section className="relative overflow-hidden flex py-24">
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-3xl mx-auto text-center">

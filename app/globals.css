@@ -125,6 +125,7 @@
       hsl(var(--primary)),
       hsl(var(--accent))
     );
+    --shadow-lifted: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
   }
 
   body {
@@ -176,5 +177,13 @@
   .bg-gradient-4 {
     background-image: var(--color-gradient-4);
     background-color: transparent;
+  }
+   .hover-lift {
+    transition: all 0.3s;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: var(--shadow-lifted);
   }
 }
