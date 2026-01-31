@@ -2,6 +2,7 @@ import Heading from "./fields/heading";
 import ImageField from "./fields/imageField";
 import AdvancedText from "./fields/advancedText";
 import Button from "./fields/button";
+import Form from "./layout/form";
 
 type ColumnProps = {
   column: {
@@ -27,9 +28,10 @@ export default function Column({ column }: ColumnProps) {
   const customClass = column.customClass || "";
 
   // Define shadowCard class conditionally
-   const shadowCard = column.columnStyle === "shadow" 
-    ? "bg-card border border-border md:p-12 p-8 rounded-3xl shadow-soft gap-8" 
-    : "";
+  const shadowCard =
+    column.columnStyle === "shadow"
+      ? "bg-card border border-border md:p-12 p-8 rounded-3xl shadow-soft gap-8"
+      : "";
 
   return (
     <div
@@ -50,7 +52,9 @@ export default function Column({ column }: ColumnProps) {
           case "advancedText":
             return <AdvancedText key={block._key} content={block.content} />;
           case "button":
-            return <Button key={block._key}  button={block} />;
+            return <Button key={block._key} button={block} />;
+          case "form":
+            return <Form key={block._key} form={block} />;
           default:
             // console.log("9. Unknown block type:", block._type);
             return null;
