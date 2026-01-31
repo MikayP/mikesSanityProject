@@ -1,7 +1,6 @@
 import Button from "../fields/button"
 
 export default function Card({ card }) {
-  console.log(card);
   
   if (!card) return null;
 

@@ -11,6 +11,7 @@ import link from './fields/link'
 import menuItem from './fields/menuItem'
 import hero from './types/hero'
 import card from './objects/card'
+import form from './objects/form'
 
 export const schemaTypes = [ page, mainMenu, menuItem, card, row, hero, contentBuilder, 
-    heading, column, imageField, advancedText, button, link ]
+    heading, column, imageField, advancedText, button, form, link ]

@@ -132,13 +132,16 @@
     @apply bg-background text-foreground;
   }
 
-  h1 strong {
-    font-family: var(--font-handwritten);
-    font-size: 3.75rem; /* text-6xl */
-    background: var(--gradient-warm);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+  h1,
+  h2 {
+    strong {
+      font-family: var(--font-handwritten);
+
+      background: var(--gradient-warm);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
   }
 
   @media (min-width: 768px) {
@@ -178,10 +181,10 @@
     background-image: var(--color-gradient-4);
     background-color: transparent;
   }
-   .hover-lift {
+  .hover-lift {
     transition: all 0.3s;
   }
-  
+
   .hover-lift:hover {
     transform: translateY(-0.25rem);
     box-shadow: var(--shadow-lifted);

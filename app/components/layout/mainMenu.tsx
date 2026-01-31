@@ -27,8 +27,8 @@ export default function MainMenu({ mainMenu }: MainMenuProps) {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <a href="#" className="text-2xl font-handwritten font-bold text-primary">
-            alex ✨
+          <a href="/" className="text-2xl font-handwritten font-bold text-primary">
+            Mike Portman ✨
           </a>
           <div className="hidden md:flex items-center gap-8">
             {mainMenu.menuItems.map((item) => (
