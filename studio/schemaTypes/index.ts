@@ -7,6 +7,7 @@ import heading from './fields/heading'
 import imageField from './fields/imageField'
 import advancedText from './fields/advancedText'
 import button from './fields/button'
+import buttonStyles from './fields/buttonStyles'
 import link from './fields/link' 
 import menuItem from './fields/menuItem'
 import hero from './types/hero'
@@ -14,4 +15,4 @@ import card from './objects/card'
 import form from './objects/form'
 
 export const schemaTypes = [ page, mainMenu, menuItem, card, row, hero, contentBuilder, 
-    heading, column, imageField, advancedText, button, form, link ]
+    heading, column, imageField, advancedText, button, buttonStyles, form, link ]

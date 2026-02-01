@@ -122,7 +122,12 @@ export const pageQuery = groq`
             },
             style,
             targetBlank
-          }
+          },
+          _type == "form" => {
+            formTitle,
+            buttonStyle,
+            formCTA
+        } 
         }
       }
     }
