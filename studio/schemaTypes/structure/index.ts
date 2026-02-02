@@ -11,21 +11,26 @@ export const structure: StructureResolver = (S) =>
         .title('Main Menu')
         .schemaType('mainMenu')
         .child(S.documentTypeList('mainMenu').title('Menus')),
-      
+
       // Divider
       S.divider(),
-      
+
       // Pages
       S.listItem()
         .title('Pages')
         .schemaType('page')
         .child(S.documentTypeList('page').title('Pages')),
-      
-    //   Divider
-    //   S.divider(),
-      
-    //   All other document types
-    //   ...S.documentTypeListItems().filter(
-    //     (listItem) => !['menu', 'page'].includes(listItem.getId() || '')
-    //   ),
+
+      S.listItem()
+        .title('Blogs')
+        .schemaType('blogs')
+        .child(S.documentTypeList('blogs').title('Blogs')),
+
+      //   Divider
+      //   S.divider(),
+
+      //   All other document types
+      //   ...S.documentTypeListItems().filter(
+      //     (listItem) => !['menu', 'page'].includes(listItem.getId() || '')
+      //   ),
     ])

@@ -1,5 +1,6 @@
 import page from './documents/page'
 import mainMenu from './documents/mainMenu'
+import blogs from './documents/blogs'
 import contentBuilder from './fields/contentBuilder'
 import row from './types/row'
 import column from './types/column'
@@ -14,5 +15,5 @@ import hero from './types/hero'
 import card from './objects/card'
 import form from './objects/form'
 
-export const schemaTypes = [ page, mainMenu, menuItem, card, row, hero, contentBuilder, 
+export const schemaTypes = [ page, mainMenu, blogs, menuItem, card, row, hero, contentBuilder, 
     heading, column, imageField, advancedText, button, buttonStyles, form, link ]
