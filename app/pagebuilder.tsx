@@ -1,6 +1,9 @@
 import Row from "./components/row";
 import Hero from "./components/hero/hero";
 import Card from "./components/layout/card";
+import BlogList from "./components/blog/blogList";
+
+
 
 export default function PageBuilder({ blocks }) {
   // console.log("PageBuilder blocks:", blocks);
@@ -35,6 +38,10 @@ export default function PageBuilder({ blocks }) {
                 // Changed from spreading block
               />
             );
+
+          case "blogList":  // Changed from "blog"
+            return <BlogList key={block._key} blogList={block} />;
+
           default:
             return null;
         }

@@ -127,7 +127,11 @@ export const pageQuery = groq`
             formTitle,
             buttonStyle,
             formCTA
-        } 
+        } ,
+              _type == "blogs" => {
+                title,
+                subTitle
+              },
         }
       }
     }

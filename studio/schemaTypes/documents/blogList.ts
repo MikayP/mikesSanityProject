@@ -1,6 +1,5 @@
 import {defineField, defineType} from 'sanity'
 import {publishedDateField} from '../fields/publishedDate'
-import {advancedText} from '../fields/advancedText'
 export default defineType({
   name: 'blogs',
   title: 'Blogs',
@@ -30,6 +29,9 @@ export default defineType({
 
     {...publishedDateField},
 
-    {...advancedText},
+    defineField({
+      name: 'body',
+      type: 'advancedText',
+    }),
   ],
 })
