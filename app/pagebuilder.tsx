@@ -18,7 +18,7 @@ export default function PageBuilder({ blocks }) {
                 columnLayout={block.columnLayout}
               />
             );
-          case "blogList":  // Make sure this matches your schema name
+          case "blogList":  
             return <BlogList key={block._key} blogList={block} />;
           default:
             return null;
