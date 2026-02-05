@@ -159,8 +159,7 @@
 }
 
 @layer utilities {
-  .container-custom {
-    max-width: 1400px;
+  section.container{
     margin-left: auto;
     margin-right: auto;
     padding-left: 1.5rem;
