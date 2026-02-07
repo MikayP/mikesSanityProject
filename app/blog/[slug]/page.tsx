@@ -2,6 +2,9 @@ import { client } from "../../../studio/client";
 import MainMenu from "../../components/layout/mainMenu";
 import { groq } from "next-sanity";
 import { PortableText } from "@portabletext/react";
+import { getSiteSettings } from '../../queries/getSiteSettings';
+import { generateMetadata as genMeta } from '../../queries/generateMetaData';
+import { Metadata } from 'next';
 
 /* ----------------------------------
    GROQ queries
@@ -13,6 +16,15 @@ const blogPostQuery = groq`
     publishedDate,
     body{
       content
+    },
+    seo{
+      metaTitle,
+      metaDescription,
+      metaImage{
+        asset->{
+          url
+        }
+      }
     }
   }
 `;
@@ -53,6 +65,44 @@ export async function generateStaticParams() {
 }
 
 /* ----------------------------------
+   Generate Metadata
+---------------------------------- */
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: Promise<{ slug: string }> 
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const [blog, settings] = await Promise.all([
+    client.fetch(blogPostQuery, { slug }),
+    getSiteSettings(),
+  ]);
+
+  // console.log("=== METADATA DEBUG ===");
+  // console.log("Slug:", slug);
+  // console.log("Page data:", blog);
+  // console.log("Page SEO:", blog?.seo);
+  // console.log("Settings:", settings);
+  // console.log("Settings default SEO:", settings?.defaultSeo);
+
+  if (!blog) {
+    return {
+      title: 'Blog Post Not Found',
+    };
+  }
+
+  return genMeta({
+    title: blog.title,
+    description: blog.subTitle,
+    seo: blog.seo,
+    defaultSeo: settings?.defaultSeo,
+    siteName: settings?.siteName,
+    siteUrl: settings?.siteUrl,
+    path: `/blog/${slug}`,
+  });
+}
+
+/* ----------------------------------
    Page component
 ---------------------------------- */
 type BlogSubPageProps = {
@@ -67,14 +117,6 @@ export default async function BlogSubPage({ params }: BlogSubPageProps) {
     client.fetch(mainMenuQuery),
   ]);
 
-  console.log("Full blog object:", blog);
-  console.log("advancedText:", blog?.advancedText);
-  console.log("content array:", blog?.advancedText?.content);
-  console.log(
-    "Is content an array?",
-    Array.isArray(blog?.advancedText?.content),
-  );
-
   if (!blog) {
     return <div>Blog post not found</div>;
   }
@@ -85,6 +127,10 @@ export default async function BlogSubPage({ params }: BlogSubPageProps) {
 
       <article className="max-w-3xl mx-auto container py-16">
         <h1 className="text-4xl font-bold mb-4">{blog.title}</h1>
+
+        {blog.subTitle && (
+          <p className="text-xl text-muted-foreground mb-6">{blog.subTitle}</p>
+        )}
 
         {blog.publishedDate && (
           <p className="text-sm text-gray-500 mb-10">

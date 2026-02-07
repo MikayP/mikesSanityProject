@@ -12,6 +12,14 @@ export const structure: StructureResolver = (S) =>
         .schemaType('mainMenu')
         .child(S.documentTypeList('mainMenu').title('Menus')),
 
+          // Singleton - Site Settings
+      S.listItem()
+        .title('Site Settings')
+        .child(
+          S.document()
+            .schemaType('siteSettings')
+            .documentId('siteSettings')
+        ),
       // Divider
       S.divider(),
 

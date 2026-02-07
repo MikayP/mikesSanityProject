@@ -2,12 +2,54 @@ import { client } from "../../studio/client";
 import PageBuilder from "../pagebuilder";
 import MainMenu from "../components/layout/mainMenu";
 import { pageQuery } from "../queries/pageQuery";
+import { getSiteSettings } from "../queries/getSiteSettings";
+import { generateMetadata as genMeta } from "../queries/generateMetaData";
+import { Metadata } from "next";
 
 
-export default async function Page({ params }: { params: { slug: string } }) {
-  const { slug } = await params; // Add this line
-  const data = await client.fetch(pageQuery, { slug }); // Use destructured slug
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  console.log("=== METADATA FUNCTION CALLED ===");
 
+  const { slug } = await params;
+  console.log("Slug:", slug);
+
+  const [data, settings] = await Promise.all([
+    client.fetch(pageQuery, { slug }),
+    getSiteSettings(),
+  ]);
+
+  console.log("Data:", data);
+  console.log("Settings:", settings);
+
+  if (!data) {
+    return {
+      title: "Page Not Found",
+    };
+  }
+
+  return genMeta({
+    title: data.title,
+    seo: data.seo,
+    defaultSeo: settings?.defaultSeo,
+    siteName: settings?.siteName,
+    siteUrl: settings?.siteUrl,
+    path: `/${slug}`,
+  });
+}
+
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  console.log("=== PAGE COMPONENT CALLED ===");
+
+  const { slug } = await params;
+  const data = await client.fetch(pageQuery, { slug });
 
   if (!data) {
     return <div>Page not found</div>;

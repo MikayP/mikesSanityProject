@@ -3,6 +3,19 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 // import "../styles/styles.scss"
 
+import { getSiteSettings } from "./queries/getSiteSettings";
+import { generateMetadata as genMeta } from "./queries/generateMetaData";
+
+export async function generateMetaData() {
+  const settings = await getSiteSettings();
+
+  return genMeta({
+    siteName: settings?.siteName,
+    siteUrl: settings?.siteUrl,
+    defaultSeo: settings?.defaultSeo,
+  });
+}
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],

@@ -4,6 +4,15 @@ export const pageQuery = groq`
   *[_type == "page" && slug.current == $slug][0]{
     title,
     "currentSlug": slug.current,
+        seo{
+      metaTitle,
+      metaDescription,
+      metaImage{
+        asset->{
+          url
+        }
+      }
+    },
 
     "mainMenu": *[_type == "mainMenu"][0]{
       title,

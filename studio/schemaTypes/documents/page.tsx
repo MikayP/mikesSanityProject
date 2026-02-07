@@ -1,11 +1,21 @@
 import {defineField, defineType} from 'sanity'
-import {publishedDateField} from '../fields/publishedDate'
 import {pageBuilderFields} from '../fields/pageBuilderFields'
 
 export default defineType({
   name: 'page',
   title: 'Page',
   type: 'document',
+  groups: [
+    {
+      name: 'basic',
+      title: 'Basic',
+      default: true,
+    },
+    {
+      name: 'seo',
+      title: 'SEO',
+    },
+  ],
   fields: [
     defineField({
       name: 'title',
@@ -28,7 +38,12 @@ export default defineType({
       name: 'publishedDate',
       type: 'publishedDateType',
     }),
-    
+
     {...pageBuilderFields},
+    defineField({
+      name: 'seo',
+      type: 'seo',
+      group: 'seo',
+    }),
   ],
 })

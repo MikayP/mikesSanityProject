@@ -16,7 +16,8 @@ import hero from './types/hero'
 import card from './objects/card'
 import form from './objects/form'
 import seo from './objects/seo'
+import siteSettings from './documents/siteSettings'
 
 
 export const schemaTypes = [ page, mainMenu, seo, blogList, publishedDate, menuItem, card, row, hero, contentBuilder, 
-    heading, column, imageField, advancedText, button, buttonStyles, form, link ]
+    heading, column, imageField, advancedText, button, siteSettings, buttonStyles, form, link ]
