@@ -1,9 +1,9 @@
-import { defineField } from 'sanity';
+import {defineField} from 'sanity'
 
-export const publishedDateField = defineField({
-    name: 'publishedDate',
-    title: 'Published Date',
-    type: 'datetime',
-    description: 'The date and time when the content was published.',
-    validation: (Rule) => Rule.required(),
-});
+export default defineField({
+  name: 'publishedDateType', // Different name from the field
+  title: 'Published Date',
+  type: 'datetime',
+  description: 'The date and time when the content was published.',
+  validation: (Rule) => Rule.required(),
+})

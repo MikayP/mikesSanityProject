@@ -86,10 +86,6 @@ export default async function BlogSubPage({ params }: BlogSubPageProps) {
       <article className="max-w-3xl mx-auto container py-16">
         <h1 className="text-4xl font-bold mb-4">{blog.title}</h1>
 
-        {blog.subTitle && (
-          <p className="text-xl text-muted-foreground mb-6">{blog.subTitle}</p>
-        )}
-
         {blog.publishedDate && (
           <p className="text-sm text-gray-500 mb-10">
             {new Date(blog.publishedDate).toLocaleDateString()}

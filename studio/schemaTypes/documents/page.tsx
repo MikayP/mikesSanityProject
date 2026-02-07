@@ -24,7 +24,11 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
 
-    {...publishedDateField},
+    defineField({
+      name: 'publishedDate',
+      type: 'publishedDateType',
+    }),
+    
     {...pageBuilderFields},
   ],
 })
