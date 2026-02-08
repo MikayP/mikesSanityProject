@@ -3,10 +3,11 @@ import Card from "../components/layout/card";
 
 type RowProps = {
   columns?: any[];
-  columnLayout?: string; // Add this
+  columnLayout?: string;
+  title?: string;  // Keep this
 };
 
-export default function Row({ columns, columnLayout }: RowProps) {
+export default function Row({ columns, columnLayout, title }: RowProps) {  // Changed rowQuery to title
   const gridColsMap: Record<string, string> = {
     "1": "md:grid-cols-1",
     "2": "md:grid-cols-2",
@@ -21,10 +22,13 @@ export default function Row({ columns, columnLayout }: RowProps) {
     "11": "md:grid-cols-11",
     "12": "md:grid-cols-12",
   };
-
-  const gridClass = gridColsMap[columnLayout] || "md:grid-cols-2";
+  
+  console.log("Row data:", { columns, columnLayout, title });
+  
+  const gridClass = gridColsMap[columnLayout || "1"] || "md:grid-cols-2";
+  
   return (
-    <section className="row pb-lg max-w-6xl mx-auto">
+    <section id={title?.toLowerCase()} className="row pb-lg max-w-6xl mx-auto">
       <div
         className={`grid ${gridClass} gap-8 md:gap-20 container-custom mx-auto px-6`}
       >

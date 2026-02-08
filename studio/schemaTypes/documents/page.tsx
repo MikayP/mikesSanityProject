@@ -21,6 +21,7 @@ export default defineType({
       name: 'title',
       title: 'Page Title',
       type: 'string',
+      group: 'basic',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
@@ -31,15 +32,17 @@ export default defineType({
         source: 'title',
         maxLength: 96,
       },
+      group: 'basic',
       validation: (Rule) => Rule.required(),
     }),
 
     defineField({
       name: 'publishedDate',
       type: 'publishedDateType',
+      group: 'basic',
     }),
 
-    {...pageBuilderFields},
+    {...pageBuilderFields, group: 'basic'},
     defineField({
       name: 'seo',
       type: 'seo',

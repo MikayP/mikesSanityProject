@@ -7,7 +7,7 @@ export default function MainHero({ hero }) {
   // console.log("Hero data:", hero.buttons);
 
   return (
-    <section className="min-h-screen relative overflow-hidden flex items-center pt-20">
+    <section className="min-h-screen relative overflow-hidden flex items-center">
       {/* Decorative blobs */}
 
       {hero.blobs && <Blobs />}

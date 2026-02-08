@@ -16,6 +16,7 @@ export default function PageBuilder({ blocks }) {
                 key={block._key}
                 columns={block.contentBuilder}
                 columnLayout={block.columnLayout}
+                title={block.title}
               />
             );
           case "blogList":  

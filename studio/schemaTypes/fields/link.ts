@@ -1,46 +1,48 @@
-import { defineField, defineType } from "sanity";
-import { schemaTypesWithPage } from "../utils/references";
+import {defineField, defineType} from 'sanity'
+import {schemaTypesWithPage} from '../utils/references'
 
-const AllowedSchemes = ["https:", "http:", "mailto:", "tel:"];
+const AllowedSchemes = ['https:', 'http:', 'mailto:', 'tel:']
 
 export default defineType({
-  name: "link",
-  title: "Link",
-  type: "object",
+  name: 'link',
+  title: 'Link',
+  type: 'object',
   options: {
     collapsible: true,
     collapsed: false,
   },
   groups: [
     {
-      name: "link",
+      name: 'link',
       default: true,
     },
     {
-      name: "advanced",
+      name: 'advanced',
     },
   ],
   fields: [
     defineField({
-      name: "linkType",
-      title: "Link Type",
-      type: "string",
-      description: "Specify whether the link is to an internal or external URL, or to a file such as a PDF.",
-      initialValue: "external",
+      name: 'linkType',
+      title: 'Link Type',
+      type: 'string',
+      description:
+        'Specify whether the link is to an internal or external URL, or to a file such as a PDF.',
+      initialValue: 'external',
       options: {
         list: [
-          { title: "Internal", value: "internal" },
-          { title: "External/custom", value: "external" },
-          { title: "File", value: "file" },
+          {title: 'Internal', value: 'internal'},
+          {title: 'External/custom', value: 'external'},
+          {title: 'File', value: 'file'},
         ],
-        layout: "radio",
+        layout: 'radio',
       },
-      group: "link",
+      group: 'link',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "internal",
-      title: "Internal Reference",
-      type: "reference",
+      name: 'internal',
+      title: 'Internal Reference',
+      type: 'reference',
       to: schemaTypesWithPage.map((d) => ({
         type: d,
       })),
@@ -59,25 +61,25 @@ export default defineType({
       //   },
       //   disableNew: true,
       // },
-      hidden: ({ parent }) => {
-        return parent?.linkType !== "internal";
+      hidden: ({parent}) => {
+        return parent?.linkType !== 'internal'
       },
-      group: "link",
+      group: 'link',
     }),
     defineField({
-      name: "external",
-      title: "External URL",
-      type: "string",
-      description: "Use an absolute URL, email, telephone, or custom value with #",
-      hidden: ({ parent }) => parent?.linkType !== "external",
-      group: "link",
+      name: 'external',
+      title: 'External URL',
+      type: 'string',
+      description: 'Use an absolute URL, email, telephone, or custom value with #',
+      hidden: ({parent}) => parent?.linkType !== 'external',
+      group: 'link',
     }),
     defineField({
-      name: "file",
-      title: "File",
-      type: "file",
-      hidden: ({ parent }) => parent?.linkType !== "file",
-      group: "link",
+      name: 'file',
+      title: 'File',
+      type: 'file',
+      hidden: ({parent}) => parent?.linkType !== 'file',
+      group: 'link',
     }),
     // {
     //   ...customAttributes,
@@ -86,11 +88,11 @@ export default defineType({
   ],
   preview: {
     select: {
-      linkType: "linkType",
-      title: "internal.title",
-      breadcrumbTitle: "internal.docSettings.docBreadcrumbTitle",
-      external: "external",
-      filename: "file.asset.originalFilename",
+      linkType: 'linkType',
+      title: 'internal.title',
+      breadcrumbTitle: 'internal.docSettings.docBreadcrumbTitle',
+      external: 'external',
+      filename: 'file.asset.originalFilename',
     },
     // prepare(selection) {
     //   const { linkType, title, breadcrumbTitle, external, filename } = selection;
@@ -111,8 +113,8 @@ export default defineType({
     //   };
     // },
   },
-});
+})
 
 function isRelativeUrl(url: string) {
-  return url.startsWith("/");
+  return url.startsWith('/')
 }
