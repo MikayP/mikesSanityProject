@@ -24,7 +24,7 @@ export default function Row({ columns, columnLayout }: RowProps) {
 
   const gridClass = gridColsMap[columnLayout] || "md:grid-cols-2";
   return (
-    <section className="row pb-lg">
+    <section className="row pb-lg max-w-6xl mx-auto">
       <div
         className={`grid ${gridClass} gap-8 md:gap-20 container-custom mx-auto px-6`}
       >

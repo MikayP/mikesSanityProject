@@ -12,18 +12,14 @@ export async function generateMetadata({
 }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  console.log("=== METADATA FUNCTION CALLED ===");
 
   const { slug } = await params;
-  console.log("Slug:", slug);
+
 
   const [data, settings] = await Promise.all([
     client.fetch(pageQuery, { slug }),
     getSiteSettings(),
   ]);
-
-  console.log("Data:", data);
-  console.log("Settings:", settings);
 
   if (!data) {
     return {
@@ -46,7 +42,6 @@ export default async function Page({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  console.log("=== PAGE COMPONENT CALLED ===");
 
   const { slug } = await params;
   const data = await client.fetch(pageQuery, { slug });

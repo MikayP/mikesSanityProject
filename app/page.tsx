@@ -9,15 +9,12 @@ import { Metadata } from 'next';
 
 
 export async function generateMetadata(): Promise<Metadata> {
-  console.log("=== HOMEPAGE METADATA ===");
   
   const [data, settings] = await Promise.all([
     client.fetch(pageQuery, { slug: "/" }), // Or whatever your home slug is
     getSiteSettings(),
   ]);
 
-  console.log("Data:", data);
-  console.log("Settings:", settings);
 
   if (!data) {
     return {

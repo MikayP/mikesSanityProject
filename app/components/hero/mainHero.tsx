@@ -17,7 +17,7 @@ export default function MainHero({ hero }) {
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="max-w-6xl mx-auto text-center">
           {/* Greeting */}
           {/* <div className="animate-fade-up" style={{ animationDelay: "0.1s" }}>
             <span className="text-6xl animate-wave">👋</span>
@@ -77,17 +77,7 @@ export default function MainHero({ hero }) {
             </Button> */}
           </div>
         </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce-soft">
-          <a
-            href="#about"
-            className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
-          >
-            <span className="text-sm font-handwritten">scroll down!</span>
-            {/* <ArrowDown size={20} /> */}
-          </a>
-        </div>
+        
       </div>
     </section>
   );

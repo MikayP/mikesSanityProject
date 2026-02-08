@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import { Metadata } from "next";
 
 type SEOData = {
   metaTitle?: string;
@@ -27,13 +27,19 @@ export function generateMetadata({
   image,
   seo,
   defaultSeo,
-  siteName = 'Your Site',
-  path = '',
-  siteUrl = 'https://yoursite.com',
+  siteName = "Your Site",
+  path = "",
+  siteUrl = "https://mikeportman.com",
 }: GenerateMetadataProps): Metadata {
-  const metaTitle = seo?.metaTitle || title || defaultSeo?.metaTitle || siteName;
-  const metaDescription = seo?.metaDescription || description || defaultSeo?.metaDescription || '';
-  const metaImage = seo?.metaImage?.asset?.url || image || defaultSeo?.metaImage?.asset?.url || '';
+  const metaTitle =
+    seo?.metaTitle || title || defaultSeo?.metaTitle || siteName;
+  const metaDescription =
+    seo?.metaDescription || description || defaultSeo?.metaDescription || "";
+  const metaImage =
+    seo?.metaImage?.asset?.url ||
+    image ||
+    defaultSeo?.metaImage?.asset?.url ||
+    "";
   const url = `${siteUrl}${path}`;
 
   return {
@@ -45,10 +51,10 @@ export function generateMetadata({
       url,
       siteName,
       images: metaImage ? [metaImage] : [],
-      type: 'website',
+      type: "website",
     },
     twitter: {
-      card: 'summary_large_image',
+      card: "summary_large_image",
       title: metaTitle,
       description: metaDescription,
       images: metaImage ? [metaImage] : [],
