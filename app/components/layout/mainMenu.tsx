@@ -16,7 +16,11 @@ type MainMenuProps = {
         _type: string;
         linkType: "internal" | "external" | "file";
         external?: string;
-        internal?: any;
+        internal?: {
+          slug?: {
+            current: string;
+          };
+        };
         file?: any;
       };
     }>;
@@ -27,6 +31,22 @@ export default function MainMenu({ mainMenu }: MainMenuProps) {
   // console.log(mainMenu);
 
   if (!mainMenu?.menuItems) return null;
+
+  // Helper function to get the correct href
+  const getHref = (item: MainMenuProps["mainMenu"]["menuItems"][0]) => {
+    if (!item.link) return "#";
+
+    if (item.link.linkType === "external") {
+      return item.link.external || "#";
+    }
+
+    if (item.link.linkType === "internal") {
+      return `/${item.link.internal?.slug?.current || ""}`;
+    }
+
+    return "#";
+  };
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   return (
     <nav className="fixed sticky relative top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
@@ -46,7 +66,7 @@ export default function MainMenu({ mainMenu }: MainMenuProps) {
               <a
                 className="text-muted-foreground hover:text-primary transition-colors duration-300 font-medium"
                 key={item._key}
-                href={item.link?.external || "#"}
+                href={getHref(item)}
               >
                 {item.title}
               </a>
@@ -70,7 +90,7 @@ export default function MainMenu({ mainMenu }: MainMenuProps) {
               {mainMenu.menuItems.map((item) => (
                 <a
                   key={item._key}
-                  href={item.link?.external || "#"}
+                  href={getHref(item)}
                   className="text-muted-foreground hover:text-primary transition-colors duration-300 font-medium py-2"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >

@@ -4,7 +4,7 @@ export const pageQuery = groq`
   *[_type == "page" && slug.current == $slug][0]{
     title,
     "currentSlug": slug.current,
-        seo{
+    seo{
       metaTitle,
       metaDescription,
       metaImage{
@@ -24,7 +24,9 @@ export const pageQuery = groq`
           _type,
           linkType,
           external,
-          internal->,
+          internal->{
+            slug
+          },
           file{
             asset->
           }
@@ -36,16 +38,28 @@ export const pageQuery = groq`
       _key,
       _type,
       
-      // Fetch ALL fields at this level
-      ...,
-      
       // Hero-specific fields (when _type is hero)
       _type == "hero" => {
         heading,
         subheading,
         heroStyle,
         advancedText{
-          content
+          content[]{
+            ...,
+            markDefs[]{
+              ...,
+              _type == "link" => {
+                linkType,
+                external,
+              internal->{ slug{ current } },
+                file{
+                  asset->{
+                    url
+                  }
+                }
+              }
+            }
+          }
         },
         blobs,
         button[]{
@@ -56,7 +70,9 @@ export const pageQuery = groq`
             _type,
             linkType,
             external,
-            internal->,
+            internal->{
+              slug
+            },
             file{
               asset->
             }
@@ -66,81 +82,106 @@ export const pageQuery = groq`
         }
       },
       
-      // ContentBuilder fields (when _type is row)
-      contentBuilder[]{
-        _key,
-        _type,
-        
-        // Card fields (when _type is card)
-        _type == "card" => {
-          heading,
-          text,
-          pills,
-          cardBG,
-          button{
-            _key,
-            _type,
-            title,
-            link{
-              _type,
-              linkType,
-              external,
-              internal->,
-              file{
-                asset->
-              }
-            },
-            style,
-            targetBlank
-          }
-        },
-        
-        // Column fields (when _type is column)
-        colHorizontalAlign,
-        colVerticalAlign,
-        colTextAlign,
+      // Row-specific fields (when _type is row)
+      _type == "row" => {
+        title,
         columnLayout,
-        customClass,
-        columnStyle,
-        columnContent[]{
+        contentBuilder[]{
           _key,
           _type,
-          _type == "heading" => {
-            level,
-            text
-          },
-          _type == "advancedText" => {
-            content
-          },
-          _type == "imageField" => {
-            borderRadius,
-            maxHeight,
-            asset->,
-            alt
-          },
-          _type == "button" => {
-            title,
-            link{
+          
+          // Card fields (when _type is card)
+          _type == "card" => {
+            heading,
+            text,
+            pills,
+            cardBG,
+            button{
+              _key,
               _type,
-              linkType,
-              external,
-              internal->,
-              file{
-                asset->
-              }
-            },
-            style,
-            targetBlank
+              title,
+              link{
+                _type,
+                linkType,
+                external,
+                internal->{
+                  slug
+                },
+                file{
+                  asset->
+                }
+              },
+              style,
+              targetBlank
+            }
           },
-          _type == "form" => {
-            formTitle,
-            buttonStyle,
-            formCTA
-        } ,
+          
+          // Column fields (when _type is column)
+          _type == "column" => {
+            colHorizontalAlign,
+            colVerticalAlign,
+            colTextAlign,
+            columnLayout,
+            customClass,
+            columnStyle,
+            columnContent[]{
+              _key,
+              _type,
+              _type == "heading" => {
+                level,
+                text
+              },
+              _type == "advancedText" => {
+                content[]{
+                  ...,
+                  markDefs[]{
+                    ...,
+                    _type == "link" => {
+                      linkType,
+                      external,
+                      internal->{ slug{ current } },
+                      file{
+                        asset->{
+                          url
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              _type == "imageField" => {
+                borderRadius,
+                maxHeight,
+                asset->,
+                alt
+              },
+              _type == "button" => {
+                title,
+                link{
+                  _type,
+                  linkType,
+                  external,
+                  internal->{
+                    slug
+                  },
+                  file{
+                    asset->
+                  }
+                },
+                style,
+                targetBlank
+              },
+              _type == "form" => {
+                formTitle,
+                buttonStyle,
+                formCTA
+              },
               _type == "blogs" => {
                 title,
                 subTitle
-              },
+              }
+            }
+          }
         }
       }
     }

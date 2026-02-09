@@ -7,7 +7,7 @@ export default function MainHero({ hero }) {
   // console.log("Hero data:", hero.buttons);
 
   return (
-    <section className="min-h-screen relative overflow-hidden flex items-center">
+    <section id="mainHero" className="min-h-screen relative overflow-hidden flex items-center">
       {/* Decorative blobs */}
 
       {hero.blobs && <Blobs />}
@@ -25,7 +25,7 @@ export default function MainHero({ hero }) {
 
           {/* Main heading */}
           <div
-            className="text-5xl md:text-7xl font-bold leading-tight mt-6 mb-4 animate-fade-up"
+            className="font-bold leading-tight mt-6 mb-4 animate-fade-up"
             style={{ animationDelay: "0.2s" }}
           >
             {hero.advancedText?.content && (
