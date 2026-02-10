@@ -1,4 +1,5 @@
 import { groq } from "next-sanity";
+import { heroProjection } from "./heroQuery";
 
 export const pageQuery = groq`
   *[_type == "page" && slug.current == $slug][0]{
@@ -24,9 +25,7 @@ export const pageQuery = groq`
           _type,
           linkType,
           external,
-          internal->{
-            slug
-          },
+         internal->{ slug{ current } },
           file{
             asset->
           }
@@ -38,49 +37,9 @@ export const pageQuery = groq`
       _key,
       _type,
       
-      // Hero-specific fields (when _type is hero)
-      _type == "hero" => {
-        heading,
-        subheading,
-        heroStyle,
-        advancedText{
-          content[]{
-            ...,
-            markDefs[]{
-              ...,
-              _type == "link" => {
-                linkType,
-                external,
-              internal->{ slug{ current } },
-                file{
-                  asset->{
-                    url
-                  }
-                }
-              }
-            }
-          }
-        },
-        blobs,
-        button[]{
-          _key,
-          _type,
-          title,
-          link{
-            _type,
-            linkType,
-            external,
-            internal->{
-              slug
-            },
-            file{
-              asset->
-            }
+         _type == "hero" => {
+            ${heroProjection}
           },
-          style,
-          targetBlank
-        }
-      },
       
       // Row-specific fields (when _type is row)
       _type == "row" => {
@@ -104,9 +63,7 @@ export const pageQuery = groq`
                 _type,
                 linkType,
                 external,
-                internal->{
-                  slug
-                },
+             internal->{ slug{ current } },
                 file{
                   asset->
                 }
@@ -161,9 +118,7 @@ export const pageQuery = groq`
                   _type,
                   linkType,
                   external,
-                  internal->{
-                    slug
-                  },
+                 internal->{ slug{ current } },
                   file{
                     asset->
                   }

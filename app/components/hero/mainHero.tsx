@@ -3,6 +3,7 @@ import Blobs from "../fields/blobs";
 import Button from "../fields/button";
 import "../../../styles/sass/components/hero.scss";
 
+
 export default function MainHero({ hero }) {
   // console.log("Hero data:", hero.buttons);
 
