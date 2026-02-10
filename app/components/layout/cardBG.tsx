@@ -1,42 +1,52 @@
-import Button from "../fields/button";
+// cardbg.tsx
+import { getLinkUrl } from "../utils/linkHelpers";
+import imageField from "../fields/imageField";
+import { urlFor } from "../fields/sanityImageUrl";
 
-export default function CardBG({ card }) {
+type CardBGProps = {
+  card: {
+    _key: string;
+    heading?: string;
+    text?: string;
+    pills?: string[];
+    image?: any; // The image field data
+    button?: {
+      link?: any;
+    };
+  };
+};
+
+export default function CardBG({ card }: CardBGProps) {
   if (!card) return null;
+  console.log("CardBG card data:", card);
+  console.log("cardBGImage:", card.image);
 
-  // const PortfolioSection = () => {
-  //   const portfolio = [
-  //     {
-  //       title: "Coffee Finder",
-  //       description: "Find the best coffee spots nearby",
-  //       tags: ["React", "Maps API"],
-  //       thumbnail: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=400&fit=crop",
-  //       url: "#",
-  //     },
-  //   ];
   return (
     <section id="portfolio" className="relative">
       <div className="container mx-auto">
         <div className="max-w-5xl mx-auto grid ">
           <a
-            key={index}
-            href={card.button}
+            key={card._key}
+            href={getLinkUrl(card.button?.link)}
             className="group relative rounded-3xl overflow-hidden border border-border hover:border-primary/50 transition-all duration-300 hover-lift aspect-[3/2]"
           >
-            {/* Thumbnail Background */}
-            <img
-              // src={item.thumbnail}
-              alt={`${card.title} website screenshot`}
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              loading="lazy"
-            />
+               {/* Thumbnail Background */}
+            {card.image && (
+              <img
+                src={urlFor(card.image).width(800).url()}
+                alt={card.image.alt || `${card.heading} website screenshot`}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+              />
+            )}
             {/* Overlay */}
             <div className="absolute inset-0 bg-background/60 group-hover:bg-background/80 transition-all duration-300" />
             {/* Content */}
             <div className="relative z-10 h-full flex flex-col justify-end p-6 md:p-8">
               <div className="flex flex-wrap gap-2 mb-3">
-                {card.pills?.map((tag) => (
+                {card.pills?.map((tag, index) => (
                   <span
-                    key={tag}
+                    key={index}
                     className="px-3 py-1 rounded-full bg-primary/20 backdrop-blur-sm text-xs font-medium text-primary-foreground"
                   >
                     {tag}
@@ -44,11 +54,11 @@ export default function CardBG({ card }) {
                 ))}
               </div>
               <h3 className="text-2xl font-bold mb-1 group-hover:text-primary transition-colors">
-                {card.title}
+                {card.heading}
               </h3>
-              <p className="text-muted-foreground text-sm">
-                {item.description}
-              </p>
+              {card.text && (
+                <p className="text-sm text-muted-foreground">{card.text}</p>
+              )}
             </div>
           </a>
         </div>

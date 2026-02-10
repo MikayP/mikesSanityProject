@@ -23,14 +23,14 @@ export default defineType({
       group: 'settings',
       options: {
         list: [
-              {title: 'Gradient Card 1', value: 'bg-gradient-1'},
-              {title: 'Gradient Card 2', value: 'bg-gradient-2'}, 
-              {title: 'Gradient Card 3', value: 'bg-gradient-3'},
-              {title: 'Gradient Card 4', value: 'bg-gradient-4'}, 
-              {title: 'Card with image BG', value: 'card-image-bg'},
-            ],   
-          }
-        }),
+          {title: 'Gradient Card 1', value: 'bg-gradient-1'},
+          {title: 'Gradient Card 2', value: 'bg-gradient-2'},
+          {title: 'Gradient Card 3', value: 'bg-gradient-3'},
+          {title: 'Gradient Card 4', value: 'bg-gradient-4'},
+          {title: 'Card with image BG', value: 'card-image-bg'},
+        ],
+      },
+    }),
 
     defineField({
       name: 'heading',
@@ -60,7 +60,15 @@ export default defineType({
       name: 'button',
       title: 'Button',
       type: 'button',
-      group: 'basic',
+      group: 'settings',
+      hidden: ({parent}) => parent?.cardStyle != 'card-image-bg',
+    }),
+    defineField({
+      name: 'image',
+      title: 'Image',
+      type: 'image',
+      group: 'settings',
+      hidden: ({parent}) => parent?.cardStyle != 'card-image-bg',
     }),
   ],
 })

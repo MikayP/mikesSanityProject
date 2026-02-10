@@ -1,4 +1,5 @@
 import { ExternalLink } from 'lucide-react';
+import { getLinkUrl } from "../utils/linkHelpers"
 type ButtonProps = {
   button: {
     title: string;
@@ -14,21 +15,7 @@ type ButtonProps = {
 };
 
 export default function Button({ button }: ButtonProps) {
-  // Determine the URL based on link type
-  const getUrl = () => {
-    if (!button.link) return '#';
-    
-    switch (button.link.linkType) {
-      case 'external':
-        return button.link.external || '#';
-      case 'internal':
-        return button.link.internal?.slug?.current || '#';
-      case 'file':
-        return button.link.file?.asset?.url || '#';
-      default:
-        return '#';
-    }
-  };
+
 
     const getButtonStyles = () => {
     switch (button.style) {
@@ -44,7 +31,7 @@ export default function Button({ button }: ButtonProps) {
   };
   return (
     
-     <a href={getUrl()}
+     <a href={getLinkUrl(button.link)}
       target={button.targetBlank ? '_blank' : '_self'}
       rel={button.targetBlank ? 'noopener noreferrer' : undefined}
       className={getButtonStyles()}
