@@ -13,18 +13,18 @@ export default defineType({
 
      defineField({
       name: 'columnLayout',
-      title: 'Column Layout',
+      title: 'Columns',
       type: 'string',
       options: {
         list: [
-          {title: '1 Column Layout', value: '1'},
-          {title: '2 Column Layout', value: '2'},
-          {title: '3 Column Layout', value: '3'},
-          {title: '4 Column Layout', value: '4'},
-          {title: '5 Column Layout', value: '5'},
-          {title: '6 Column Layout', value: '6'},
-          {title: '7 Column Layout', value: '7'},
-          {title: '8 Column Layout', value: '8'},
+          {title: '1 Column', value: '1'},
+          {title: '2 Columns', value: '2'},
+          {title: '3 Columns', value: '3'},
+          {title: '4 Columns', value: '4'},
+          {title: '5 Columns', value: '5'},
+          {title: '6 Columns', value: '6'},
+          {title: '7 Columns', value: '7'},
+          {title: '8 Columns', value: '8'},
         ],
         layout: 'dropdown',
       },

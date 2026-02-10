@@ -54,7 +54,7 @@ export const pageQuery = groq`
             heading,
             text,
             pills,
-            cardBG,
+            cardStyle,
             button{
               _key,
               _type,

@@ -1,6 +1,6 @@
 import Column from "./column";
 import Card from "../components/layout/card";
-
+import CardBG from "../components/layout/cardBG";
 type RowProps = {
   columns?: any[];
   columnLayout?: string;
@@ -22,9 +22,7 @@ export default function Row({ columns, columnLayout, title }: RowProps) {  // Ch
     "11": "md:grid-cols-11",
     "12": "md:grid-cols-12",
   };
-  
-  console.log("Row data:", { columns, columnLayout, title });
-  
+
   const gridClass = gridColsMap[columnLayout || "1"] || "md:grid-cols-2";
   
   return (
@@ -33,9 +31,21 @@ export default function Row({ columns, columnLayout, title }: RowProps) {  // Ch
         className={`grid ${gridClass} gap-8 md:gap-20 container-custom mx-auto px-6`}
       >
         {columns?.map((item) => {
-          if (item._type === "card") {
-            return <Card key={item._key} card={item} />;
-          }
+          // Check if it's a card type first
+      if (item._type === "card") {
+        // Check for image background card
+        if (item.cardStyle === "card-image-bg") {
+          return <CardBG key={item._key} card={item} />;
+        }
+        // Check for gradient cards
+        if (item.cardStyle?.startsWith("bg-gradient-")) {
+          return <Card key={item._key} card={item} />;
+        }
+        // Default card rendering
+        return <Card key={item._key} card={item} />;
+      }
+      
+          
           return <Column key={item._key} column={item} />;
         })}
       </div>

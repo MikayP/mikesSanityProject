@@ -17,8 +17,8 @@ export default defineType({
   ],
   fields: [
     defineField({
-      name: 'cardBG',
-      title: 'Card Background',
+      name: 'cardStyle',
+      title: 'Card Style',
       type: 'string',
       group: 'settings',
       options: {
@@ -27,6 +27,7 @@ export default defineType({
               {title: 'Gradient Card 2', value: 'bg-gradient-2'}, 
               {title: 'Gradient Card 3', value: 'bg-gradient-3'},
               {title: 'Gradient Card 4', value: 'bg-gradient-4'}, 
+              {title: 'Card with image BG', value: 'card-image-bg'},
             ],   
           }
         }),
