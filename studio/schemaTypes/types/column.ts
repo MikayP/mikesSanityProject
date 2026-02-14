@@ -56,7 +56,7 @@ export default defineType({
       title: 'Column Content',
       type: 'array',
       group: 'basic',
-      of: [{type: 'heading'}, {type: 'advancedText'}, {type: 'imageField'}, {type: 'button'}, {type: 'form'}],
+      of: [{type: 'heading'}, {type: 'advancedText'}, {type: 'imageField'}, {type: 'button'}, {type: 'form'}, {type: 'pill'}],
     }),
         defineField({
       name: 'columnStyle',

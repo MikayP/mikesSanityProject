@@ -17,7 +17,8 @@ import card from './objects/card'
 import form from './objects/form'
 import seo from './objects/seo'
 import siteSettings from './documents/siteSettings'
+import innerRow from './types/innerRow'
+import pill from  './fields/pill'
 
-
-export const schemaTypes = [ page, mainMenu, seo, blogList, publishedDate, menuItem, card, row, hero, contentBuilder, 
+export const schemaTypes = [ page, mainMenu, seo, pill, blogList, innerRow, publishedDate, menuItem, card, row, hero, contentBuilder, 
     heading, column, imageField, advancedText, button, siteSettings, buttonStyles, form, link ]

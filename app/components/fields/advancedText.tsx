@@ -9,9 +9,7 @@ const customComponents = {
   // Block-level elements (paragraphs, headings, blockquotes)
   block: {
     normal: ({ children }) => <p className="text-lg mb-4">{children}</p>,
-    h2: ({ children }) => (
-      <h2 className="text-4xl font-bold mb-5 mt-7">{children}</h2>
-    ),
+  
   },
 
   // Marks (inline annotations like links, bold, italic)

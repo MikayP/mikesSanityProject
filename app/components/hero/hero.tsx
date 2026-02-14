@@ -1,6 +1,5 @@
 import MainHero from "./mainHero"; 
 import SubPageHero from "./subPageHero";
-import { heroQuery } from "../../queries/heroQuery";
 
 export default function Hero({ hero }) {
 

@@ -18,19 +18,17 @@ type CardBGProps = {
 
 export default function CardBG({ card }: CardBGProps) {
   if (!card) return null;
-  console.log("CardBG card data:", card);
-  console.log("cardBGImage:", card.image);
 
   return (
-    <section id="portfolio" className="relative">
-      <div className="container mx-auto">
-        <div className="max-w-5xl mx-auto grid ">
+   <section className="relative cardBG max-h-[50vh] h-[50vh]">
+      <div className="mx-auto h-full">
+        <div className="mx-auto grid h-full">
           <a
             key={card._key}
             href={getLinkUrl(card.button?.link)}
-            className="group relative rounded-3xl overflow-hidden border border-border hover:border-primary/50 transition-all duration-300 hover-lift aspect-[3/2]"
+            className="group relative rounded-3xl overflow-hidden border border-border hover:border-primary/50 transition-all duration-300 hover-lift h-full"
           >
-               {/* Thumbnail Background */}
+            {/* Thumbnail Background */}
             {card.image && (
               <img
                 src={urlFor(card.image).width(800).url()}

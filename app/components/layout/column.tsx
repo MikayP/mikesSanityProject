@@ -1,9 +1,9 @@
-import Heading from "./fields/heading";
-import ImageField from "./fields/imageField";
-import AdvancedText from "./fields/advancedText";
-import Button from "./fields/button";
-import Form from "./layout/form";
-
+import Heading from "../fields/heading";
+import ImageField from "../fields/imageField";
+import AdvancedText from "../fields/advancedText";
+import Button from "../fields/button";
+import Form from "../layout/form";
+import Pill from "../fields/pill";
 type ColumnProps = {
   column: {
     columnContent?: any[];
@@ -55,6 +55,8 @@ export default function Column({ column }: ColumnProps) {
             return <Button key={block._key} button={block} />;
           case "form":
             return <Form key={block._key} form={block} />;
+          case "pill":
+            return <Pill key={block._key} pill={block} />;
           default:
             // console.log("9. Unknown block type:", block._type);
             return null;

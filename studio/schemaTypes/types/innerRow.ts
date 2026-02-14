@@ -1,15 +1,16 @@
-import {defineType, defineField, defineArrayMember} from 'sanity'
+import { defineType, defineField, defineArrayMember } from 'sanity'
 
+// innerRow.ts
 export default defineType({
-  name: 'row',
-  title: 'Row Block',
+  name: 'innerRow',
+  title: 'Inner Row',
   type: 'object',
-  fields: [
+fields: [
     defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
-      initialValue: 'Row Title',
+      initialValue: 'Inner Row',
     }),
 
     defineField({
@@ -35,27 +36,5 @@ export default defineType({
       title: 'Column Content Builder',
       type: 'contentBuilder',
     }),
-    // defineField({
-    //   name: 'backgroundColor',
-    //   title: 'Background Color',
-    //   type: 'string',
-    //   options: {
-    //     list: [
-    //       { title: 'White', value: 'white' },
-    //       { title: 'Light Gray', value: 'gray' },
-    //       { title: 'Black', value: 'black' },
-    //     ],
-    //   },
-    // }),
   ],
-  // preview: {
-  //   select: {
-  //     title: 'title',
-  //   },
-  //   prepare({ title }) {
-  //     return {
-  //       title: title || 'Untitled Row',
-  //     }
-  //   },
-  // },
-})
+});

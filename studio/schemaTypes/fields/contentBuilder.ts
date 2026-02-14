@@ -6,6 +6,6 @@ export default defineType({
     title: 'Content Builder',
     type: 'array',
     of: [
-      {type: 'column',}, {type: 'card'}
+      {type: 'column',}, {type: 'card'},  {type: 'innerRow'}, 
     ]
 })

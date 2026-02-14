@@ -1,6 +1,7 @@
 import { groq } from "next-sanity";
 import { heroProjection } from "./heroQuery";
-
+import { innerRowQuery } from "./innerRowQuery";
+import { pillQuery } from "./pillQuery";
 export const pageQuery = groq`
   *[_type == "page" && slug.current == $slug][0]{
     title,
@@ -76,7 +77,14 @@ export const pageQuery = groq`
               targetBlank
             }
           },
-          
+
+                 _type == "pill" => {
+${pillQuery}
+},
+                  // Inner Row fields (when _type is innerRow)
+          _type == "innerRow" => {
+            ${innerRowQuery}
+          },
           // Column fields (when _type is column)
           _type == "column" => {
             colHorizontalAlign,
@@ -130,6 +138,9 @@ export const pageQuery = groq`
                 style,
                 targetBlank
               },
+                _type == "pill" => {
+      ${pillQuery}
+    }, 
               _type == "form" => {
                 formTitle,
                 buttonStyle,

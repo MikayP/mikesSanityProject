@@ -1,4 +1,5 @@
 // heroQuery.ts
+
 export const heroProjection = `
   heading,
   subheading,
