@@ -1,8 +1,10 @@
 export const pillQuery = `
-   pillImage{
-    asset->,
-    alt,
+  pills[]{
+    pillImage{
+      asset->,
+      alt,
     },
     pillStyle,
     text
+  }
 `;

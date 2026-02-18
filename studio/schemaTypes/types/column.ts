@@ -56,9 +56,16 @@ export default defineType({
       title: 'Column Content',
       type: 'array',
       group: 'basic',
-      of: [{type: 'heading'}, {type: 'advancedText'}, {type: 'imageField'}, {type: 'button'}, {type: 'form'}, {type: 'pill'}],
+      of: [
+        {type: 'heading'},
+        {type: 'advancedText'},
+        {type: 'imageField'},
+        {type: 'button'},
+        {type: 'form'},
+        {type: 'pill'},
+      ],
     }),
-        defineField({
+    defineField({
       name: 'columnStyle',
       title: 'Column Style',
       type: 'string',
@@ -66,10 +73,7 @@ export default defineType({
       initialValue: 'shadow',
       group: 'settings',
       options: {
-        list: [
-          {title: 'Shadow', value: 'shadow'},
-
-        ],
+        list: [{title: 'Shadow', value: 'shadow'}],
       },
     }),
     defineField({
@@ -144,8 +148,7 @@ export default defineType({
       title: 'Custom CSS Classes',
       description: 'Add custom CSS classes to the column for additional styling',
       group: 'settings',
-    }), 
-
+    }),
   ],
 
   preview: {
