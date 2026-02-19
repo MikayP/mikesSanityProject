@@ -12,18 +12,7 @@ export default defineType({
       of: [
         {
           type: 'object',
-          preview: {
-            select: {
-              text: 'text',
-              style: 'pillStyle',
-            },
-            prepare: ({text, style}) => {
-              return {
-                title: text || 'Untitled Pill',
-                subtitle: style || 'No style selected',
-              }
-            },
-          },
+
           fields: [
             defineField({
               name: 'pillImage',
@@ -48,6 +37,18 @@ export default defineType({
               title: 'Text',
             }),
           ],
+          preview: {
+            select: {
+              text: 'text',
+              style: 'pillStyle',
+            },
+            prepare: ({text, style}) => {
+              return {
+                title: text || 'Untitled Pill',
+                subtitle: style || 'No style selected',
+              }
+            },
+          },
         },
       ],
     }),

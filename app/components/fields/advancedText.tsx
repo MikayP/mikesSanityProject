@@ -6,14 +6,12 @@ type AdvancedTextProps = {
 };
 
 const customComponents = {
-  // Block-level elements (paragraphs, headings, blockquotes)
-  block: {
-    normal: ({ children }) => <p className="text-lg mb-4">{children}</p>,
-  
-  },
-
   // Marks (inline annotations like links, bold, italic)
   marks: {
+    left: ({ children }: any) => <div className="text-left">{children}</div>,
+    center: ({ children }: any) => (<div className="text-center w-full">{children}</div>
+    ),
+    right: ({ children }: any) => <div className="text-right">{children}</div>,
     link: ({ value, children }) => {
       const { linkType, internal, external, file } = value;
 
@@ -42,7 +40,6 @@ const customComponents = {
 
 export default function AdvancedText({ content }: AdvancedTextProps) {
   if (!content) return null;
-
 
   return (
     <div className="portable-text prose">

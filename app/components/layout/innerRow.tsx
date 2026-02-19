@@ -27,9 +27,12 @@ export default function InnerRow({ columns, columnLayout, title }: RowProps) {
   const gridClass = gridColsMap[columnLayout || "1"] || "md:grid-cols-2";
 
   return (
-    <section id={title?.toLowerCase()} className="row inner-row pb-lg w-full mx-auto">
+    <section
+      id={title?.toLowerCase()}
+      className="row inner-row pb-lg w-full mx-auto"
+    >
       <div
-        className={`grid ${gridClass} gap-8 md:gap-20 container-custom mx-auto`}
+        className={`grid ${gridClass} gap-8 md:gap-14 container-custom mx-auto`}
       >
         {columns?.map((item) => {
           // Check if it's a card type first

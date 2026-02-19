@@ -1,7 +1,7 @@
 import Column from "./column";
 import Card from "./card";
 import CardBG from "./cardBG";
-import InnerRow from "./innerRow"; 
+import InnerRow from "./innerRow";
 type RowProps = {
   columns?: any[];
   columnLayout?: string;
@@ -30,7 +30,7 @@ export default function Row({ columns, columnLayout, title }: RowProps) {
   return (
     <section id={title?.toLowerCase()} className="row pb-lg max-w-6xl mx-auto">
       <div
-        className={`grid ${gridClass} gap-8 md:gap-20 container-custom mx-auto px-6`}
+        className={`grid ${gridClass} gap-8 md:gap-14 container-custom mx-auto px-6`}
       >
         {columns?.map((item) => {
           // Check if it's a card type first
@@ -46,7 +46,7 @@ export default function Row({ columns, columnLayout, title }: RowProps) {
             // Default card rendering
             return <Card key={item._key} card={item} />;
           }
-       
+
           // Handle innerRow
           if (item._type === "innerRow") {
             return (

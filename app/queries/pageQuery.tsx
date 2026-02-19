@@ -114,7 +114,11 @@ ${pillQuery}
                           url
                         }
                       }
-                    }
+                    },
+                      _type== "span" => {
+                      text,
+                      marks 
+                      },
                   }
                 }
               },

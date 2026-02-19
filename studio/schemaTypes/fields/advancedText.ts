@@ -1,4 +1,8 @@
 import {defineType, defineField} from 'sanity'
+import {ArrowLeftIcon} from '@sanity/icons'
+import {ArrowUpIcon} from '@sanity/icons'
+import {ArrowRightIcon} from '@sanity/icons'
+import { TextAlign } from '../../../app/components/utils/textAlign'
 
 export default defineType({
   name: 'advancedText',
@@ -13,6 +17,13 @@ export default defineType({
         {
           type: 'block',
           marks: {
+            decorators: [
+              {title: 'Text Strong', value: 'strong'},
+              {title: 'Text Emphasis', value: 'em'},
+              {title: 'Text Left', value: 'left', icon: ArrowLeftIcon, component: (props) => TextAlign(props)},
+              {title: 'Text Center', value: 'center', icon: ArrowUpIcon, component: (props) => TextAlign(props)},
+              {title: 'Text Right', value: 'right', icon: ArrowRightIcon, component: (props) => TextAlign(props)},
+            ],
             annotations: [
               {
                 name: 'link',

@@ -10,7 +10,7 @@ export default function MainHero({ hero }) {
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto text-center">
           <div
-            className="font-bold leading-tight mt-6 mb-4 animate-fade-up"
+            className="font-bold leading-tight mt-6 mb-4"
             style={{ animationDelay: "0.2s" }}
           >
             {hero.advancedText?.content && (
@@ -19,7 +19,7 @@ export default function MainHero({ hero }) {
           </div>
 
           <p
-            className="text-2xl md:text-3xl text-muted-foreground mb-6 font-handwritten animate-fade-up"
+            className="text-2xl md:text-3xl text-muted-foreground mb-6 font-handwritten "
             style={{ animationDelay: "0.3s" }}
           >
             {hero.subheading}
