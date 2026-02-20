@@ -1,19 +1,34 @@
 import {defineType, defineField, defineArrayMember} from 'sanity'
+import {ActivityIcon, CogIcon, MobileDeviceIcon} from '@sanity/icons'
 
 export default defineType({
   name: 'row',
   title: 'Row Block',
   type: 'object',
+  groups: [
+    {
+      name: 'basic',
+      title: 'Basic',
+      default: true,
+      icon: ActivityIcon,
+    },
+    {
+      name: 'settings',
+      title: 'Settings',
+      icon: CogIcon,
+    },
+  ],
   fields: [
     defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
       initialValue: 'Row Title',
+      group: 'basic',
     }),
 
     defineField({
-      name: 'columnLayout',
+      name: 'columns',
       title: 'Columns',
       type: 'string',
       options: {
@@ -29,24 +44,26 @@ export default defineType({
         ],
         layout: 'dropdown',
       },
+      group: 'basic',
     }),
     defineField({
       name: 'contentBuilder',
       title: 'Column Content Builder',
       type: 'contentBuilder',
+      group: 'basic',
     }),
-    // defineField({
-    //   name: 'backgroundColor',
-    //   title: 'Background Color',
-    //   type: 'string',
-    //   options: {
-    //     list: [
-    //       { title: 'White', value: 'white' },
-    //       { title: 'Light Gray', value: 'gray' },
-    //       { title: 'Black', value: 'black' },
-    //     ],
-    //   },
-    // }),
+
+    defineField({
+      name: 'backgroundColor',
+      title: 'Background Color',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Shadow', value: 'bg-shadow'},
+        ],
+      },
+      group: 'settings',
+    }),
   ],
   // preview: {
   //   select: {

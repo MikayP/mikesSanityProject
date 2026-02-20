@@ -16,6 +16,7 @@ export default function PageBuilder({ blocks }) {
                 columns={block.contentBuilder}
                 columnLayout={block.columnLayout}
                 title={block.title}
+                columnBackground={block.backgroundColor ? `bg-${block.backgroundColor}` : undefined}  // ← Add bg- prefix
               />
             );
           case "blogList":

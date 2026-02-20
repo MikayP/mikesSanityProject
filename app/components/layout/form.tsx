@@ -32,11 +32,11 @@ export default function Form({ form }) {
   };
 
   return (
-    <section id="contact" className="py-24 bg-card relative overflow-hidden">
+    <section className="py-24 relative overflow-hidden">
       {/* Decorative */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-secondary via-primary to-accent" />
+      {/* <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-secondary via-primary to-accent" />
       <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-primary/10 blob" />
-      <div className="absolute -top-20 -left-20 w-48 h-48 bg-accent/20 blob-2" />
+      <div className="absolute -top-20 -left-20 w-48 h-48 bg-accent/20 blob-2" /> */}
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto text-center">

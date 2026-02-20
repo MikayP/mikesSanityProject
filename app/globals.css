@@ -230,6 +230,9 @@
   p:not(:last-child) {
     margin-bottom: 1.5rem;
   }
+  .bg-shadow {
+    background-color: var(--color-card); 
+  }
   .bg-gradient-1 {
     background-image: var(--color-gradient-1);
     background-color: transparent;

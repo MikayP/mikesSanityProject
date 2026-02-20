@@ -45,7 +45,8 @@ export const pageQuery = groq`
       // Row-specific fields (when _type is row)
       _type == "row" => {
         title,
-        columnLayout,
+          backgroundColor,  
+
         contentBuilder[]{
           _key,
           _type,

@@ -11,12 +11,14 @@ export default defineType({
       name: 'formTitle',
       type: 'string',
       title: 'Form Title',
+      validation: (rule) => rule.required(),
     }),
     buttonStyle, // 👈 reuse the field
-       defineField({
+    defineField({
       name: 'formCTA',
       type: 'string',
       title: 'Form CTA',
+      validation: (rule) => rule.required(),
     }),
   ],
 })

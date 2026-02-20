@@ -13,8 +13,7 @@ type PillProps = {
 
 export default function Pill({ pill }: PillProps) {
   if (!pill?.pills) return null;
-  
-  console.log("Pill data:", pill);
+
 
   const getPillStyles = (style?: string) => {
     switch (style) {

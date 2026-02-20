@@ -5,19 +5,26 @@ export const getLinkUrl = (link: any) => {
   switch (link.linkType) {
     case "external":
       const externalUrl = link.external || "#";
-      // Ensure external links have a protocol
+      
+      // Don't modify anchor links or links that already have a protocol
       if (
-        externalUrl !== "#" &&
-        !externalUrl.startsWith("http://") &&
-        !externalUrl.startsWith("https://")
+        externalUrl === "#" ||
+        externalUrl.startsWith("#") ||
+        externalUrl.startsWith("http://") ||
+        externalUrl.startsWith("https://")
       ) {
-        return `https://${externalUrl}`;
+        return externalUrl;
       }
-      return link.external || "#";
+      
+      // Add https:// to external URLs without a protocol
+      return `https://${externalUrl}`;
+      
     case "internal":
-      return link.internal?.slug?.current || "#";
+      return link.internal?.slug?.current ? `/${link.internal.slug.current}` : "#";
+      
     case "file":
       return link.file?.asset?.url || "#";
+      
     default:
       return "#";
   }

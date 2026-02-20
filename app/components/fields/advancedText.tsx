@@ -8,10 +8,15 @@ type AdvancedTextProps = {
 const customComponents = {
   // Marks (inline annotations like links, bold, italic)
   marks: {
-    left: ({ children }: any) => <div className="text-left">{children}</div>,
-    center: ({ children }: any) => (<div className="text-center w-full">{children}</div>
+  left: ({ children }: any) => (
+      <span className="block text-left">{children}</span>
     ),
-    right: ({ children }: any) => <div className="text-right">{children}</div>,
+    center: ({ children }: any) => (
+      <span className="block text-center w-full">{children}</span>
+    ),
+    right: ({ children }: any) => (
+      <span className="block text-right">{children}</span>
+    ),
     link: ({ value, children }) => {
       const { linkType, internal, external, file } = value;
 

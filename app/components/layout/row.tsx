@@ -6,9 +6,11 @@ type RowProps = {
   columns?: any[];
   columnLayout?: string;
   title?: string; // Keep this
+  columnBackground?: string; // ← Add this
+  row?: any; // Add this for the entire row data
 };
 
-export default function Row({ columns, columnLayout, title }: RowProps) {
+export default function Row({ columns, columnLayout, title, columnBackground  }: RowProps) {
   // Changed rowQuery to title
   const gridColsMap: Record<string, string> = {
     "1": "md:grid-cols-1",
@@ -26,9 +28,9 @@ export default function Row({ columns, columnLayout, title }: RowProps) {
   };
 
   const gridClass = gridColsMap[columnLayout || "1"] || "md:grid-cols-2";
-
+console.log("Row Props:", { columnBackground, title, columns });
   return (
-    <section id={title?.toLowerCase()} className="row pb-lg max-w-6xl mx-auto">
+    <section id={title?.toLowerCase()} className={`row pb-lg mx-auto ${columnBackground}`} >
       <div
         className={`grid ${gridClass} gap-8 md:gap-14 container-custom mx-auto px-6`}
       >
