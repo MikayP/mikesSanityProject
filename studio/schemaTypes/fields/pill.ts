@@ -4,6 +4,19 @@ export default defineType({
   name: 'pill',
   title: 'Pills',
   type: 'object',
+  preview: {
+    select: {
+      pills: 'pills',
+    },
+    prepare: ({pills}) => {
+      const pillCount = pills?.length || 0;
+      const firstPillText = pills?.[0]?.text || 'No pills';
+      return {
+        title: pillCount > 1 ? `${pillCount} pills` : firstPillText,
+        subtitle: pillCount > 1 ? `First: ${firstPillText}` : undefined,
+      }
+    },
+  },
   fields: [
     defineField({
       name: 'pills',
@@ -12,7 +25,6 @@ export default defineType({
       of: [
         {
           type: 'object',
-
           fields: [
             defineField({
               name: 'pillImage',
@@ -45,7 +57,7 @@ export default defineType({
             prepare: ({text, style}) => {
               return {
                 title: text || 'Untitled Pill',
-                subtitle: style || 'No style selected',
+                subtitle: style || 'No style',
               }
             },
           },

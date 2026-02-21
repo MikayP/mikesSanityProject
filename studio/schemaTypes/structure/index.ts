@@ -6,20 +6,25 @@ export const structure: StructureResolver = (S) =>
   S.list()
     .title('Content')
     .items([
-      // Menu type first
       S.listItem()
-        .title('Main Menu')
-        .schemaType('mainMenu')
-        .child(S.documentTypeList('mainMenu').title('Menus')),
+        .title('Menus')
+        .child(
+          S.list()
+            .title('Menus')
+            .items([
+              S.listItem()
+                .title('Main Menu')
+                .child(S.documentList().title('Main Menu').filter('_type == "mainMenu"')),
+              S.listItem()
+                .title('Footer')
+                .child(S.documentList().title('Footer').filter('_type == "footer"')),
+            ]),
+        ),
 
-          // Singleton - Site Settings
+      // Singleton - Site Settings
       S.listItem()
         .title('Site Settings')
-        .child(
-          S.document()
-            .schemaType('siteSettings')
-            .documentId('siteSettings')
-        ),
+        .child(S.document().schemaType('siteSettings').documentId('siteSettings')),
       // Divider
       S.divider(),
 

@@ -29,3 +29,25 @@ export const getLinkUrl = (link: any) => {
       return "#";
   }
 };
+
+export const getLinkTarget = (link: any) => {
+  if (!link) return undefined;
+  
+  // Open in new tab if it's an external link and openInNewTab is true
+  if (link.linkType === "external" && link.openInNewTab) {
+    return "_blank";
+  }
+  
+  return undefined;
+};
+
+export const getLinkRel = (link: any) => {
+  if (!link) return undefined;
+  
+  // Add security attributes for external links opening in new tab
+  if (link.linkType === "external" && link.openInNewTab) {
+    return "noopener noreferrer";
+  }
+  
+  return undefined;
+};

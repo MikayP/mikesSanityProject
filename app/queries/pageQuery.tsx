@@ -69,6 +69,7 @@ export const pageQuery = groq`
                 _type,
                 linkType,
                 external,
+                 openInNewTab,
              internal->{ slug{ current } },
                 file{
                   asset->

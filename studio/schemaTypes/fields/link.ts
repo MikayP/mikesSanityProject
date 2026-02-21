@@ -46,21 +46,6 @@ export default defineType({
       to: schemaTypesWithPage.map((d) => ({
         type: d,
       })),
-      // options: {
-      //   filter: ({ document }) => {
-      //     const language = document.language ? (document.language as string) : null;
-      //     return {
-      //       filter: addLanguageParamToFilter(DocumentFilters.AllDocumentsWithAPage),
-      //       params: language
-      //         ? {
-      //             ...DocumentFilters.AllDocumentsWithAPage.params,
-      //             language,
-      //           }
-      //         : DocumentFilters.AllDocumentsWithAPage.params,
-      //     };
-      //   },
-      //   disableNew: true,
-      // },
       hidden: ({parent}) => {
         return parent?.linkType !== 'internal'
       },
@@ -75,16 +60,21 @@ export default defineType({
       group: 'link',
     }),
     defineField({
+      name: 'openInNewTab',
+      title: 'Open in new tab',
+      type: 'boolean',
+      description: 'Opens the link in a new browser tab',
+      initialValue: false,
+      hidden: ({parent}) => parent?.linkType !== 'external',
+      group: 'link',
+    }),
+    defineField({
       name: 'file',
       title: 'File',
       type: 'file',
       hidden: ({parent}) => parent?.linkType !== 'file',
       group: 'link',
     }),
-    // {
-    //   ...customAttributes,
-    //   group: "advanced",
-    // },
   ],
   preview: {
     select: {
@@ -94,24 +84,6 @@ export default defineType({
       external: 'external',
       filename: 'file.asset.originalFilename',
     },
-    // prepare(selection) {
-    //   const { linkType, title, breadcrumbTitle, external, filename } = selection;
-    //   let resolvedTitle = linkType;
-    //   if (linkType === LinkType.External && external) {
-    //     resolvedTitle = external;
-    //   }
-    //   if (linkType === LinkType.Internal) {
-    //     resolvedTitle = breadcrumbTitle ? breadcrumbTitle : title;
-    //   }
-    //   if (linkType === LinkType.File) {
-    //     resolvedTitle = filename;
-    //   }
-
-    //   return {
-    //     title: resolvedTitle,
-    //     subtitle: linkType.slice(0, 1).toUpperCase() + linkType.slice(1),
-    //   };
-    // },
   },
 })
 

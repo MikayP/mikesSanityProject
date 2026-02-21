@@ -19,6 +19,7 @@ import seo from './objects/seo'
 import siteSettings from './documents/siteSettings'
 import innerRow from './types/innerRow'
 import pill from  './fields/pill'
+import footer from './documents/footer'
 
-export const schemaTypes = [ page, mainMenu, seo, pill, blogList, innerRow, publishedDate, menuItem, card, row, hero, contentBuilder, 
+export const schemaTypes = [ page, mainMenu, seo, pill, footer, blogList, innerRow, publishedDate, menuItem, card, row, hero, contentBuilder, 
     heading, column, imageField, advancedText, button, siteSettings, buttonStyles, form, link ]
