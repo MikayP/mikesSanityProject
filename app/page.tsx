@@ -6,7 +6,7 @@ import MainMenu from "./components/layout/mainMenu";
 import { getSiteSettings } from './queries/getSiteSettings';
 import { generateMetadata as genMeta } from './queries/generateMetaData';
 import { Metadata } from 'next';
-
+import Footer from "./components/layout/footer";
 
 export async function generateMetadata(): Promise<Metadata> {
   
@@ -44,6 +44,7 @@ export default async function Page() {
     <>
       <MainMenu mainMenu={data.mainMenu} />
       <PageBuilder blocks={data.pageBuilder} />
+      <Footer footer={data.footer} mainMenu={data.mainMenu}/>
     </>
   );
 }

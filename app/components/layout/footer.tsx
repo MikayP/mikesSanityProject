@@ -1,12 +1,81 @@
-import { getLinkUrl, getLinkTarget, getLinkRel } from "@/utils/linkHelpers";
+import { getLinkUrl, getLinkTarget, getLinkRel } from "../utils/linkHelpers";
+import { PortableText } from "@portabletext/react";
+import MenuLinks from "../utils/menuLinks";
 
+type FooterProps = {
+  footer?: {
+    title?: string;
+    advancedText?: {
+      content?: any[];
+    };
+    footerItems?: Array<{
+      _key: string;
+      _type: string;
+      title: string;
+      link: any;
+    }>;
+  };
+  mainMenu?: {
+    menuItems?: Array<{
+      _key: string;
+      _type: string;
+      title: string;
+      link?: any;
+    }>;
+  };
+};
 
+const customComponents = {
+  block: {
+    normal: ({ children }) => (
+      <p className="text-xs text-muted-foreground mt-2 font-handwritten">{children}</p>
+    ),
+  }
+};
 
+export default function Footer({ footer, mainMenu }: FooterProps) {
+  if (!footer) return null;
 
-<a 
-  href={getLinkUrl(link)}
-  target={getLinkTarget(link)}
-  rel={getLinkRel(link)}
->
-  Link text
-</a>
+  return (
+    <footer className="py-12 bg-background border-t border-border">
+      <div className="flex flex-col items-center gap-6">
+        <a href="/" className="text-3xl font-handwritten font-bold text-primary">
+          Mike Portman ✨
+        </a>
+
+        {/* Main Menu Links in Footer */}
+        {mainMenu?.menuItems && (
+          <MenuLinks 
+            items={mainMenu.menuItems}
+            className="flex flex-wrap gap-4 justify-center"
+            linkClassName="text-muted-foreground hover:text-primary transition-colors font-medium"
+          />
+        )}
+
+        {/* Footer Social Links */}
+        {footer.footerItems && footer.footerItems.length > 0 && (
+          <nav className="flex gap-4">
+            {footer.footerItems.map((item) => (
+              <a
+                key={item._key}
+                href={getLinkUrl(item.link)}
+                target={getLinkTarget(item.link)}
+                rel={getLinkRel(item.link)}
+                className="px-4 py-2 rounded-full bg-muted text-sm text-muted-foreground hover:bg-primary/10 hover:text-primary transition-colors"
+              >
+                {item.title}
+              </a>
+            ))}
+          </nav>
+        )}
+
+        {/* Copyright Text */}
+        {footer.advancedText?.content && (
+          <div className="pt-6 border-t border-border w-full text-center text-xs">
+            <PortableText value={footer.advancedText.content} components={customComponents}/>
+          </div>
+        )}
+      </div>
+    </footer>
+  );
+}

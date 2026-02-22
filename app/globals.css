@@ -227,9 +227,9 @@
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }
-  p:not(:last-child) {
+  /* p:not(:last-child) {
     margin-bottom: 1.5rem;
-  }
+  } */
   .bg-shadow {
     background-color: var(--color-card); 
   }

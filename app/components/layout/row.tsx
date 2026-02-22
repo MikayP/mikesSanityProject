@@ -28,7 +28,7 @@ export default function Row({ columns, columnLayout, title, columnBackground  }:
   };
 
   const gridClass = gridColsMap[columnLayout || "1"] || "md:grid-cols-2";
-console.log("Row Props:", { columnBackground, title, columns });
+
   return (
     <section id={title?.toLowerCase()} className={`row pb-lg mx-auto ${columnBackground}`} >
       <div

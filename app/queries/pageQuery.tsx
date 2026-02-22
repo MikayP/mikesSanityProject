@@ -2,6 +2,8 @@ import { groq } from "next-sanity";
 import { heroProjection } from "./heroQuery";
 import { innerRowQuery } from "./innerRowQuery";
 import { pillQuery } from "./pillQuery";
+import footer from "@/studio/schemaTypes/documents/footer";
+import { footerQuery } from "./footerQuery";
 export const pageQuery = groq`
   *[_type == "page" && slug.current == $slug][0]{
     title,
@@ -32,6 +34,9 @@ export const pageQuery = groq`
           }
         }
       }
+    },
+      "footer": *[_type == "footer"][0]{
+      ${footerQuery}
     },
 
     pageBuilder[]{
